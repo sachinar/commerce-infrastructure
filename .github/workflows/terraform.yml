@@ -40,9 +40,8 @@ jobs:
       continue-on-error: true
 
     - name: Bucket creation
-      environment: dev
       run: |
-        gsutil ls -b gs://${GCP_PROJECT_ID} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${GCP_PROJECT_ID} && gsutil versioning set on gs://${GCP_PROJECT_ID} )
+        gsutil ls -b gs://${{ secrets.GCP_PROJECT_ID}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_ID}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_ID}} )
     
     - name: Terraform Validate
       id: validate
