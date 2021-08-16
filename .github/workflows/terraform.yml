@@ -8,6 +8,18 @@ on:
     branches: [ master ]
 
 jobs:
+  quality_check:
+    name: terrascan
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Super-Linter
+        uses: docker://ghcr.io/github/super-linter:slim-v4
+        env:
+         FILTER_REGEX_INCLUDE: "./*.tf"
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
@@ -42,7 +54,7 @@ jobs:
       id: init
       run: terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars
       continue-on-error: false
-      
+
     - name: Terraform Validate
       id: validate
       run: terraform validate -no-color
