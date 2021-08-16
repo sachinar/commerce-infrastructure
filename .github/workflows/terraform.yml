@@ -28,6 +28,13 @@ jobs:
         service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
         export_default_credentials: true
 
-    - name: Use gcloud CLI
-      run: gcloud info
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.0.4
+
+    - name: Terraform Init
+      id: init
+      run: terraform init
+      continue-on-error: true
 
