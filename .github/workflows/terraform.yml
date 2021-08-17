@@ -48,15 +48,8 @@ jobs:
       run: |
         gsutil ls -b gs://${{ secrets.GCP_PROJECT_NAME}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_NAME}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_NAME}} )
     
-    - name: Terraform Init
-      id: init
-      run: terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars
-      continue-on-error: false
-
-    - name: Terraform Validate
-      id: validate
-      run: terraform validate -no-color
-      continue-on-error: true
+    - name: composite
+      uses: ebomart/infra-composite-action@v1.2
     
     - name: Terraform plan
       id: plan
