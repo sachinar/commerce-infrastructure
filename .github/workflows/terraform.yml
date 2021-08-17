@@ -57,4 +57,8 @@ jobs:
       id: validate
       run: terraform validate -no-color
       continue-on-error: true
+    
+    - name: Terraform plan
+      id: plan
+      run: terraform plan -out=dev.tfplan -var-file=environment/dev/variables.tfvars -input=false
 
