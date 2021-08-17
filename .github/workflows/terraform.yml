@@ -53,15 +53,17 @@ jobs:
       run: |
         gsutil ls -b gs://${{ secrets.GCP_PROJECT_NAME}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_NAME}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_NAME}} )
     
-    - name: composite
-      uses: ebomart/infra-composite-action@v1.3
-      with:
-        infraEnvironment: 'dev'
+    # - name: composite
+    #   uses: ebomart/infra-composite-action@v1.3
+    #   with:
+    #     infraEnvironment: 'dev'
     
     - name: plan-dev
       uses: dflook/terraform-plan@v1.4.1
+      env:
+        GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
       with:
-        path: devpath
+        path: my-terraform-config
         var_file: environment/dev/variables.tfvars
         backend_config_file: environment/dev/gcs-bucket.tfvars
     # - name: Archive plan
