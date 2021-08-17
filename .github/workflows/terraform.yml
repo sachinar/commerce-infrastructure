@@ -71,12 +71,16 @@ jobs:
     environment: dev
     # if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
       with:
         project_id: ${{ secrets.GCP_PROJECT_ID }}
         service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
         export_default_credentials: true
+
     - name: setup terraform
       uses: hashicorp/setup-terraform@v1
       with:
@@ -86,9 +90,6 @@ jobs:
     #   uses: actions/download-artifact@v2
     #   with:
     #     name: tfplan
-
-    - name: Checkout
-      uses: actions/checkout@v2
     
     - name: init_dev
       run: |
