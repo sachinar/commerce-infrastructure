@@ -86,11 +86,11 @@ jobs:
     #   uses: actions/download-artifact@v2
     #   with:
     #     name: tfplan
+
+    - name: Checkout
+      uses: actions/checkout@v2
     
     - name: init_dev
       run: |
-        cd ../
-        ls
-        pwd
         terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars
 
