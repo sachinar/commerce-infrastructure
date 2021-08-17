@@ -86,4 +86,4 @@ jobs:
       if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
       run: |
         terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars 
-        terraform apply -input=false dev.tfplan -auto-approve
+        terraform apply -input=false dev.tfplan
