@@ -63,9 +63,9 @@ jobs:
       env:
         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
       with:
-        path: commerce-infrastructure
-        var_file: commerce-infrastructure/environment/dev/variables.tfvars
-        backend_config_file: commerce-infrastructure/environment/dev/gcs-bucket.tfvars
+        path: ./
+        var_file: environment/dev/variables.tfvars
+        backend_config_file: environment/dev/gcs-bucket.tfvars
     # - name: Archive plan
     #   uses: actions/upload-artifact@v2
     #   with:
