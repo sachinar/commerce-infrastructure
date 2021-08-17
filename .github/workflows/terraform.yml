@@ -81,10 +81,16 @@ jobs:
       with:
         name: tfplan
     
-    - name: apply_dev
+    - name: init_dev
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
       run: |
         terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars 
+        terraform apply -input=false dev.tfplan
+
+    - name: apply_dev
+      env:
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+      run: |
         terraform apply -input=false dev.tfplan
 
