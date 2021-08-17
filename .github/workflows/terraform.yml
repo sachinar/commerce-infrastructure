@@ -90,5 +90,5 @@ jobs:
     - name: init_dev
       run: |
         ls
-        terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars 
+        pwd
 
