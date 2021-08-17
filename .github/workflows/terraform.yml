@@ -71,5 +71,10 @@ jobs:
         name: tfplan
     
     - name: apply-dev
-      run: echo "Apply to Prod"
-
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.0.4
+      if: github.ref == 'refs/head/main' && github.event_name == 'push'
+      run: |
+        terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars 
+        terraform apply -input=false dev.tfplan
