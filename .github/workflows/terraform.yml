@@ -70,15 +70,15 @@ jobs:
     needs: terraform
     environment: dev
     steps:
-    - name: Download tfplan
-      uses: actions/download-artifact@v2
-      with:
-        name: tfplan
-    
     - name: setup terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 1.0.4
+    
+    - name: Download tfplan
+      uses: actions/download-artifact@v2
+      with:
+        name: tfplan
     
     - name: apply_dev
       if: github.ref == 'refs/head/master' && github.event.comment.body == 'Approved'
