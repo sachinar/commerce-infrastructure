@@ -58,4 +58,17 @@ jobs:
       with:
         name: tfplan
         path: dev.tfplan
+  
+  apply-dev:
+    name: 'apply-dev'
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+    - name: Download tfplan
+      uses: actions/download-artifact@v2
+      with:
+        name: tf.plan
+    
+    - name: apply-dev
+      run: echo "Apply to Prod"
 
