@@ -70,10 +70,12 @@ jobs:
       with:
         name: tfplan
     
-    - name: apply-dev
+    - name: setup terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 1.0.4
+    
+    - name: apply_dev
       if: github.ref == 'refs/head/main' && github.event_name == 'push'
       run: |
         terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars 
