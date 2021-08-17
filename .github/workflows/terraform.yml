@@ -71,17 +71,19 @@ jobs:
     environment: dev
     steps:
     - name: setup terraform
+      if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 1.0.4
     
     - name: Download tfplan
+      if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
       uses: actions/download-artifact@v2
       with:
         name: tfplan
     
     - name: apply_dev
-      if: github.ref == 'refs/heads/master' && github.event.comment.body == 'Approved'
+      if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
       run: |
         terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars 
         terraform apply -input=false dev.tfplan -auto-approve
