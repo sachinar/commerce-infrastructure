@@ -81,7 +81,7 @@ jobs:
         name: tfplan
     
     - name: apply_dev
-      if: github.ref == 'refs/head/master' && github.event.comment.body == 'Approved'
+      if: github.ref == 'refs/heads/master' && github.event.comment.body == 'Approved'
       run: |
         terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars 
         terraform apply -input=false dev.tfplan -auto-approve
