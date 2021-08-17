@@ -69,24 +69,26 @@ jobs:
     runs-on: ubuntu-latest
     needs: terraform
     environment: dev
-    if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
+    # if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: setup terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 1.0.4
     
-    - name: Download tfplan 
-      uses: actions/download-artifact@v2
-      with:
-        name: tfplan
+    # - name: Download tfplan 
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #     name: tfplan
     
     - name: init_dev
+      run: |
+        terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-        TF_IN_AUTOMATION: "true"
-      run: |
-        rm -rf .terraform/
-        terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars 
-        terraform apply -input=false dev.tfplan
+        export_default_credentials: true
+        TF_IN_AUTOMATION: true
 
