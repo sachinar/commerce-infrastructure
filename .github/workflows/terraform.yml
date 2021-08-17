@@ -49,11 +49,9 @@ jobs:
         gsutil ls -b gs://${{ secrets.GCP_PROJECT_NAME}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_NAME}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_NAME}} )
     
     - name: composite
-      uses: ebomart/infra-composite-action@v1.2
-    
-    - name: Terraform plan
-      id: plan
-      run: terraform plan -out=dev.tfplan -var-file=environment/dev/variables.tfvars -input=false
+      uses: ebomart/infra-composite-action@v1.3
+      with:
+        infraEnvironment: 'dev'
     
     - name: Archive plan
       uses: actions/upload-artifact@v2
