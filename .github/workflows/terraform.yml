@@ -3,17 +3,17 @@ name: 'Terraform'
 on: [push, pull_request]
 
 jobs:
-  quality_check:
-    name: terrascan
-    runs-on: ubuntu-latest
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Super-Linter
-        uses: docker://ghcr.io/github/super-linter:slim-v4
-        env:
-         FILTER_REGEX_INCLUDE: "./*.tf"
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # quality_check:
+  #   name: terrascan
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+  #     - uses: actions/checkout@v2
+  #     - name: Super-Linter
+  #       uses: docker://ghcr.io/github/super-linter:slim-v4
+  #       env:
+  #        FILTER_REGEX_INCLUDE: "./*.tf"
+  #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   terraform:
     name: 'Terraform'
@@ -61,4 +61,10 @@ jobs:
     - name: Terraform plan
       id: plan
       run: terraform plan -out=dev.tfplan -var-file=environment/dev/variables.tfvars -input=false
+    
+    - name: Archive plan
+      uses: actions/upload-artifact@v2
+      with:
+        name: tfplan
+        path: dev.tfplan
 
