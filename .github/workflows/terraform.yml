@@ -89,6 +89,7 @@ jobs:
     
     - name: init_dev
       run: |
+        cd ../
         ls
         pwd
 
