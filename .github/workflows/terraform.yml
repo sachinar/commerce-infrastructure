@@ -84,13 +84,9 @@ jobs:
     - name: init_dev
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+        TF_IN_AUTOMATION: "true"
       run: |
+        rm -rf .terraform/
         terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars 
-        terraform apply -input=false dev.tfplan
-
-    - name: apply_dev
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-      run: |
         terraform apply -input=false dev.tfplan
 
