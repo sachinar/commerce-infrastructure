@@ -61,6 +61,7 @@ jobs:
     - name: plan-dev
       uses: dflook/terraform-plan@v1.4.1
       with:
+        path: devpath
         var_file: environment/dev/variables.tfvars
         backend_config_file: environment/dev/gcs-bucket.tfvars
     # - name: Archive plan
