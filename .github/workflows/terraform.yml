@@ -86,7 +86,7 @@ jobs:
     
     - name: init_dev
       run: |
-        terraform init -input=false -backend-config=environment/$ {{ jobs.apply-dev.environment }}/gcs-bucket.tfvars
+        terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
         export_default_credentials: true
