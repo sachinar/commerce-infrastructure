@@ -92,4 +92,5 @@ jobs:
         cd ../
         ls
         pwd
+        terraform init -input=false -backend-config=environment/dev/gcs-bucket.tfvars
 
