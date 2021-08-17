@@ -63,7 +63,7 @@ jobs:
       env:
         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
       with:
-        path: my-terraform-config
+        path: ./
         var_file: environment/dev/variables.tfvars
         backend_config_file: environment/dev/gcs-bucket.tfvars
     # - name: Archive plan
