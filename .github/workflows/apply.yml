@@ -31,6 +31,33 @@ jobs:
         label: dev
         backend_config_file: environment/dev/gcs-bucket.tfvars
 
+################### Staging apply ##################################
+
+  apply-staging:
+    name: 'Install Infra Staging'
+    runs-on: ubuntu-latest
+    environment: staging
+#    if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
+
+    defaults:
+      run:
+        shell: bash
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: apply-staging
+      uses: dflook/terraform-apply@v1
+      env:
+        GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+      with:
+        path: ./
+        var_file: environment/staging/variables.tfvars
+        label: staging
+        backend_config_file: environment/staging/gcs-bucket.tfvars
+
 ################### Production apply ##################################
 
   apply-prod:
@@ -57,3 +84,4 @@ jobs:
         var_file: environment/production/variables.tfvars
         label: production
         backend_config_file: environment/production/gcs-bucket.tfvars
+
