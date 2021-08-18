@@ -8,14 +8,14 @@ jobs:
     name: 'Validate Configuration'
     runs-on: ubuntu-latest
   
-  steps:
-  - name: Validate Terraform
-    uses: actions/checkout@v2
+    steps:
+    - name: Validate Terraform
+      uses: actions/checkout@v2
 
-  - name: terraform validate
-    uses: dflook/terraform-validate@v1
-    with:
-      path: ./
+    - name: terraform validate
+      uses: dflook/terraform-validate@v1
+      with:
+        path: ./
   
   
 jobs:
