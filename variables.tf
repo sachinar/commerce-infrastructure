@@ -47,3 +47,22 @@ variable "services_ipv4_cidr_block" {
   type        = string
   description = "Services IP ranges for GKE  cluster"
 }
+
+######### NAT CONFIGURATION ###################
+variable "cloud_nat_ports_per_vm" {
+  description = "The minimum number of ports per VM for cloud nat"
+  type        = string
+}
+
+variable "tcp_transitory_idle_timeout_sec" {
+  description = "The value for tcp transitory idle timeout in sec"
+  type        = string
+}
+
+variable "cloud_nat_log_config" {
+  description = "The minimum number of ports per VM for cloud nat"
+  type = object({
+    enable = bool
+    filter = string
+  })
+}
