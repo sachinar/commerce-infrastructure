@@ -38,4 +38,3 @@ cluster_ipv4_cidr_block            = "10.2.0.0/16"
 ######### NAT CONFIGURATION ###################
 cloud_nat_ports_per_vm          = "0"
 tcp_transitory_idle_timeout_sec = "30"
-cloud_nat_log_config            = null

@@ -39,11 +39,14 @@ resource "google_compute_router_nat" "nat" {
   tcp_transitory_idle_timeout_sec    = var.tcp_transitory_idle_timeout_sec
 
   dynamic "log_config" {
-    for_each = var.cloud_nat_log_config == null ? [] : tolist(var.cloud_nat_log_config)
+    for_each = var.log_config_enable == true ? [{
+      enable = var.log_config_enable
+      filter = var.log_config_filter
+    }] : []
 
     content {
-      enable = var.cloud_nat_log_config.enable
-      filter = var.cloud_nat_log_config.filter
+      enable = log_config.value.enable
+      filter = log_config.value.filter
     }
   }
 

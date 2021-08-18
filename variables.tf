@@ -59,10 +59,20 @@ variable "tcp_transitory_idle_timeout_sec" {
   type        = string
 }
 
-variable "cloud_nat_log_config" {
-  description = "The minimum number of ports per VM for cloud nat"
-  type = object({
-    enable = bool
-    filter = string
-  })
+variable "log_config_enable" {
+  type        = bool
+  description = "Indicates whether or not to export logs"
+  default     = false
+}
+
+variable "log_config_filter" {
+  type        = string
+  description = "Specifies the desired filtering of logs on this NAT. Valid values are: \"ERRORS_ONLY\", \"TRANSLATIONS_ONLY\", \"ALL\""
+  default     = "ALL"
+}
+
+variable "enable_endpoint_independent_mapping" {
+  type        = bool
+  description = "Specifies if endpoint independent mapping is enabled."
+  default     = null
 }
