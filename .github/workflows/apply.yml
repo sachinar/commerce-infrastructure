@@ -33,7 +33,7 @@ jobs:
 
 ########### Production apply ##################################
 
-  apply:
+  apply-prod:
     name: 'Install Infra Production'
     runs-on: ubuntu-latest
     environment: prod
