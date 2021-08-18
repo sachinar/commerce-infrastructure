@@ -72,6 +72,7 @@ jobs:
       uses: dflook/terraform-apply@v1.13.0
       env:
         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
       with:
         path: ./
         var_file: environment/dev/variables.tfvars
