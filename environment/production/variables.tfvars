@@ -42,5 +42,5 @@ log_config_enable               = true
 log_config_filter               = "ERRORS_ONLY"
 
 ######### DB Postgres ####################
-postgres_ipv4_address = "10.2.16.0"
+postgres_ipv4_address = "10.4.0.0"
 postgres_ipv4_prefix  = "20"
