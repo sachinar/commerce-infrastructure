@@ -59,6 +59,7 @@ resource "google_compute_global_address" "postgres_private_ip_address" {
   address       = var.postgres_ipv4_address
   prefix_length = var.postgres_ipv4_prefix
   network       = google_compute_network.network.self_link
+  project       = var.project_id
 }
 
 resource "google_service_networking_connection" "postgres_private_vpc_connection" {
