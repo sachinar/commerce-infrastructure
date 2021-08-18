@@ -27,3 +27,11 @@ google_service_apis = [
   "cloudtasks.googleapis.com",
   "iap.googleapis.com",
 ]
+
+######## GCP NETWORK VARIABLES ############
+subnet_ip_cidr_range               = "10.0.0.0/16" 
+services_secondary_range_name      = "service-ip-range"
+services_ipv4_cidr_block           = "10.1.0.0/20"
+cluster_secondary_range_name       = "cluster-pod-ip-range"
+cluster_ipv4_cidr_block            = "10.2.0.0/16"
+##############################################
