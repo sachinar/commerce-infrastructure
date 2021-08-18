@@ -59,7 +59,7 @@ jobs:
         infraEnvironment: 'dev'
     
     - name: plan-dev
-      uses: dflook/terraform-plan@v1.4.1
+      uses: dflook/terraform-plan@v1.13.0
       env:
         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
       with:
@@ -71,7 +71,7 @@ jobs:
     #   with:
     #     name: tfplan
     #     path: dev.tfplan
-    
+
   
   apply-dev:
     name: 'apply-dev'
