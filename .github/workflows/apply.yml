@@ -31,7 +31,7 @@ jobs:
         label: dev
         backend_config_file: environment/dev/gcs-bucket.tfvars
 
-########### Production apply ##################################
+################### Production apply ##################################
 
   apply-prod:
     name: 'Install Infra Production'
