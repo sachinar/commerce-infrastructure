@@ -40,3 +40,7 @@ cloud_nat_ports_per_vm          = "1024"
 tcp_transitory_idle_timeout_sec = "60"
 log_config_enable               = true
 log_config_filter               = "ERRORS_ONLY"
+
+######### DB Postgres ####################
+postgres_ipv4_address = "10.2.16.0"
+postgres_ipv4_prefix  = "20"

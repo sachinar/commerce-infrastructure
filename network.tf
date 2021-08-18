@@ -49,5 +49,21 @@ resource "google_compute_router_nat" "nat" {
       filter = log_config.value.filter
     }
   }
+}
 
+resource "google_compute_global_address" "postgres_private_ip_address" {
+  provider      = google-beta
+  name          = "postgres-private-ip-range"
+  purpose       = "VPC_PEERING"
+  address_type  = "INTERNAL"
+  address       = var.postgres_ipv4_address
+  prefix_length = var.postgres_ipv4_prefix
+  network       = google_compute_network.network.self_link
+}
+
+resource "google_service_networking_connection" "postgres_private_vpc_connection" {
+  provider                = google-beta
+  network                 = google_compute_network.network.self_link
+  service                 = "servicenetworking.googleapis.com"
+  reserved_peering_ranges = [google_compute_global_address.postgres_private_ip_address.name]
 }

@@ -76,3 +76,14 @@ variable "enable_endpoint_independent_mapping" {
   description = "Specifies if endpoint independent mapping is enabled."
   default     = null
 }
+
+###########DB Variables ##########
+variable "postgres_ipv4_address" {
+  type        = string
+  description = "CIDR block for the postgres database"
+}
+
+variable "postgres_ipv4_prefix" {
+  type        = string
+  description = "prefix block for the postgres database"
+}
