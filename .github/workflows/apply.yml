@@ -1,10 +1,9 @@
 name: 'Install Infra'
 
 on:
-  workflow_dispatch:
   push:
     branches:
-      - master
+    - master
 
 jobs:
   apply:
