@@ -8,7 +8,8 @@ on:
 jobs:
   apply:
     name: 'Install Infra DEV'
-    enviroment: dev
+    runs-on: ubuntu-latest
+    environment: dev
     if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
 
     defaults:
