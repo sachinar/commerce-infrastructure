@@ -58,6 +58,34 @@ jobs:
         label: staging
         backend_config_file: environment/staging/gcs-bucket.tfvars
 
+
+################### Sandbox apply ##################################
+
+  apply-sandbox:
+    name: 'Install Infra Sandbox'
+    runs-on: ubuntu-latest
+    environment: sandbox
+#    if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
+
+    defaults:
+      run:
+        shell: bash
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: apply-sandbox
+      uses: dflook/terraform-apply@v1
+      env:
+        GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+      with:
+        path: ./
+        var_file: environment/sandbox/variables.tfvars
+        label: sandbox
+        backend_config_file: environment/sandbox/gcs-bucket.tfvars
+
 ################### Production apply ##################################
 
   apply-prod:
