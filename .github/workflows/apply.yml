@@ -1,0 +1,31 @@
+name: 'Install Infra'
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  apply:
+    name: 'Install Infra DEV'
+    enviroment: dev
+    if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
+
+    defaults:
+      run:
+        shell: bash
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: apply-dev
+      uses: dflook/terraform-apply@v1.13.0
+      env:
+        GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+      with:
+        path: ./
+        var_file: environment/dev/variables.tfvars
+        label: dev
+        backend_config_file: environment/dev/gcs-bucket.tfvars
