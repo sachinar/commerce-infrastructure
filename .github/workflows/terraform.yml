@@ -3,7 +3,6 @@ name: 'Terraform'
 on:
   pull_request:
 
-
 jobs:
   # quality_check:
   #   name: terrascan
