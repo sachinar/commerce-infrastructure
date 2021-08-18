@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        Env: 'Please Choose Env'
+        description: 'Please Choose Env'
         required: true
         default: 'dev'
 
