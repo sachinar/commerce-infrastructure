@@ -1,12 +1,7 @@
 name: 'Terraform'
 
-on: 
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        Env: 'Please Choose Env'     
-        required: true
-        default: 'dev'
+on:
+  pull_request:
 
 jobs:
   # quality_check:
