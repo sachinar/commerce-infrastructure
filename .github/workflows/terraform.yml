@@ -58,7 +58,7 @@ jobs:
 # Staging 
 ####################################
 
-  pre-setup-prod:
+  pre-setup-staging:
     name: 'Pre Setup Staging'
     runs-on: ubuntu-latest
     # needs: quality_check
