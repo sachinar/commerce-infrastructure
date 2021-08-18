@@ -47,3 +47,32 @@ variable "services_ipv4_cidr_block" {
   type        = string
   description = "Services IP ranges for GKE  cluster"
 }
+
+######### NAT CONFIGURATION ###################
+variable "cloud_nat_ports_per_vm" {
+  description = "The minimum number of ports per VM for cloud nat"
+  type        = string
+}
+
+variable "tcp_transitory_idle_timeout_sec" {
+  description = "The value for tcp transitory idle timeout in sec"
+  type        = string
+}
+
+variable "log_config_enable" {
+  type        = bool
+  description = "Indicates whether or not to export logs"
+  default     = false
+}
+
+variable "log_config_filter" {
+  type        = string
+  description = "Specifies the desired filtering of logs on this NAT. Valid values are: \"ERRORS_ONLY\", \"TRANSLATIONS_ONLY\", \"ALL\""
+  default     = "ALL"
+}
+
+variable "enable_endpoint_independent_mapping" {
+  type        = bool
+  description = "Specifies if endpoint independent mapping is enabled."
+  default     = null
+}
