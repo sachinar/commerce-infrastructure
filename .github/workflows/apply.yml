@@ -1,9 +1,14 @@
 name: 'Install Infra'
 
 on:
-  push:
-    branches:
-    - master
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        Env: 'Please Choose Env'
+        required: true
+        default: 'dev'
+
+
 
 jobs:
   apply:
