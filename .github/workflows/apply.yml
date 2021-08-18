@@ -8,8 +8,6 @@ on:
         required: true
         default: 'dev'
 
-
-
 jobs:
   apply:
     name: 'Install Infra DEV'
