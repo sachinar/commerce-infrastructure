@@ -7,7 +7,6 @@ jobs:
   terraform:
     name: 'Pre Setup DEV'
     runs-on: ubuntu-latest
-    needs: validate 
     environment: dev
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
