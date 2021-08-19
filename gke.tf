@@ -43,4 +43,6 @@ module "gke" {
   disable_istio_addons          = true
   # dns_cache_enabled             = var.gke_dns_cache_enabled # Used in module
   default_max_pods_per_node     = var.default_max_pods_per_node
+
+  depends_on = [resource.google_project_iam_member.container_service_account]
 }
