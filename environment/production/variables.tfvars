@@ -44,3 +44,31 @@ log_config_filter               = "ERRORS_ONLY"
 ######### DB Postgres ####################
 postgres_ipv4_address = "10.4.0.0"
 postgres_ipv4_prefix  = "20"
+
+########## GKE VARIABLES ###########
+gke_version                       = "1.20"
+gke_preemptible                   = true
+master_ipv4_cidr_block            = "10.3.0.0/28" 
+
+daily_maintenance_window_start = "03:00"
+oauth_scopes = [
+  "https://www.googleapis.com/auth/trace.append",
+  "https://www.googleapis.com/auth/monitoring",
+  "https://www.googleapis.com/auth/logging.write",
+]
+
+environment           = "production"
+
+gke_encryption_state  = "ENCRYPTED"
+gke_encryption_key    = ""
+
+workload_identity     = true
+enable_shielded_nodes = true
+######## CLUSTER VARIABLES ########
+gke_cluster_name          = "ebo-prod-gke-cluster"
+gke_instance_type         = "n1-standard-2"
+gke_auto_min_count        = 1
+gke_auto_max_count        = 5
+gke_initial_node_count    = 1
+gke_node_pool_disk_size   = 100
+gke_max_pods_per_node     = 64
