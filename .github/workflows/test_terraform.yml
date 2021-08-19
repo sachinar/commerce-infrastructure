@@ -22,7 +22,7 @@ jobs:
     - name: Set up private repo access
       uses: fusion-engineering/setup-git-credentials@v2
       with:
-        credentials: ${{secrets.CI_TOKEN}}
+        credentials: ${{ secrets.CI_TOKEN }}
 
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
@@ -40,6 +40,8 @@ jobs:
       uses: dflook/terraform-plan@v1
       env:
         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        TERRAFORM_HTTP_CREDENTIALS: |
+          github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
       with:
         path: ./
         var_file: environment/dev/variables.tfvars
