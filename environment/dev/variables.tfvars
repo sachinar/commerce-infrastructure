@@ -55,11 +55,13 @@ oauth_scopes = [
   "https://www.googleapis.com/auth/logging.write",
 ]
 
-gke_dns_cache_enabled = true
 environment           = "dev"
 
 gke_encryption_state  = "ENCRYPTED"
 gke_encryption_key    = ""
+
+workload_identity     = true
+enable_shielded_nodes = true
 ######## CLUSTER VARIABLES ########
 gke_cluster_name        = "ebo-dev-gke-cluster"
 gke_instance_type       = "n1-standard-2"

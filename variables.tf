@@ -109,11 +109,6 @@ variable "oauth_scopes" {
   type        = list(string)
 }
 
-variable "gke_dns_cache_enabled" {
-  type        = bool
-  description = "Enable the Node DNS local caching"
-}
-
 variable "environment" {
   type        = string
   description = "Enviroment where cluster has to be created"
@@ -128,10 +123,27 @@ variable "gke_encryption_key" {
   type        = string
   description = "gke cluster encryption key"
 }
-########### GKE-PURCHASE VARIABLES ##############
+
+variable "master_ipv4_cidr_block" {
+  type        = string
+  description = "IPv4 CIDR Block for Master Nodes"
+}
+
+variable "workload_identity" {
+  type    = bool
+  default = false
+}
+
+variable "enable_shielded_nodes" {
+  type        = bool
+  default     = false
+  description = "Enable the Shielded nodes features in all the nodes in a cluster"
+}
+
+########### GKEVARIABLES ##############
 variable "gke_cluster_name" {
   type        = string
-  description = "Name of GKE purchase cluster"
+  description = "Name of GKE cluster"
 }
 
 variable "gke_max_pods_per_node" {
