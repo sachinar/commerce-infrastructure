@@ -41,5 +41,6 @@ module "gke" {
   gke_encryption_key   = local.gke_management_encryption_key
 
   disable_istio_addons          = true
-
+  dns_cache_enabled             = var.gke_dns_cache_enabled
+  default_max_pods_per_node     = var.default_max_pods_per_node
 }

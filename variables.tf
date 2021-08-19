@@ -175,3 +175,8 @@ variable "gke_auto_max_count" {
   type        = number
   description = "The maximum number of VMs in the pool"
 }
+
+variable "default_max_pods_per_node" {
+  description = "The maximum number of pods to schedule per node"
+  default     = 64
+}
