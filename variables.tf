@@ -180,3 +180,9 @@ variable "default_max_pods_per_node" {
   description = "The maximum number of pods to schedule per node"
   default     = 64
 }
+
+variable "gke_dns_cache_enabled" {
+  type        = bool
+  description = "Enable the Node DNS local caching"
+  default     = true
+}

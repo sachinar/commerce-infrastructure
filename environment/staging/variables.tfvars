@@ -70,4 +70,3 @@ gke_auto_max_count      = 5
 gke_initial_node_count  = 1
 gke_node_pool_disk_size = 100
 gke_max_pods_per_node   = 64
-gke_dns_cache_enabled   = true
