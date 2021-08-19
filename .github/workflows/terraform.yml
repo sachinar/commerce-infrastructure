@@ -91,6 +91,11 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: Set up private repo access
+      uses: fusion-engineering/setup-git-credentials@v2
+      with:
+        credentials: ${{secrets.CI_TOKEN}}
     
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
@@ -133,6 +138,11 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: Set up private repo access
+      uses: fusion-engineering/setup-git-credentials@v2
+      with:
+        credentials: ${{secrets.CI_TOKEN}}
     
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
@@ -175,6 +185,11 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: Set up private repo access
+      uses: fusion-engineering/setup-git-credentials@v2
+      with:
+        credentials: ${{secrets.CI_TOKEN}}
     
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
