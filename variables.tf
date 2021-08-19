@@ -87,3 +87,79 @@ variable "postgres_ipv4_prefix" {
   type        = string
   description = "prefix block for the postgres database"
 }
+
+########### GKE VARIABLES ##############
+variable "gke_version" {
+  type        = string
+  description = "The kubernetes version to use"
+}
+
+variable "gke_preemptible" {
+  type        = bool
+  description = "flag for GKE pre-emptible"
+}
+
+variable "daily_maintenance_window_start" {
+  type        = string
+  description = "Daily maintenance window start time"
+}
+
+variable "oauth_scopes" {
+  description = "oauth scopes for gke cluster"
+  type        = list(string)
+}
+
+variable "gke_dns_cache_enabled" {
+  type        = bool
+  description = "Enable the Node DNS local caching"
+}
+
+variable "environment" {
+  type        = string
+  description = "Enviroment where cluster has to be created"
+}
+
+variable "gke_encryption_state" {
+  type        = string
+  description = "gke cluster encryption state"
+}
+
+variable "gke_encryption_key" {
+  type        = string
+  description = "gke cluster encryption key"
+}
+########### GKE-PURCHASE VARIABLES ##############
+variable "gke_cluster_name" {
+  type        = string
+  description = "Name of GKE purchase cluster"
+}
+
+variable "gke_max_pods_per_node" {
+  type        = string
+  description = "Number of max pods per node"
+}
+
+variable "gke_instance_type" {
+  type        = string
+  description = "the GKE instance type"
+}
+
+variable "gke_initial_node_count" {
+  type        = number
+  description = "The initial node count for the default node pool"
+}
+
+variable "gke_node_pool_disk_size" {
+  type        = number
+  description = "Disk Size for GKE Nodes"
+}
+
+variable "gke_auto_min_count" {
+  type        = number
+  description = "The minimum number of VMs in the pool"
+}
+
+variable "gke_auto_max_count" {
+  type        = number
+  description = "The maximum number of VMs in the pool"
+}
