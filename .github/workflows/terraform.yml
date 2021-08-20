@@ -26,6 +26,10 @@ jobs:
 
     - name: terraform validate
       uses: dflook/terraform-validate@v1
+      env:
+        GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        TERRAFORM_HTTP_CREDENTIALS: |
+          github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
       with:
         path: ./
 
