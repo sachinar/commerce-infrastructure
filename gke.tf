@@ -5,7 +5,7 @@ locals {
 
 provider "kubernetes" {
   alias                  = "gke"
-  load_config_file       = false
+#  load_config_file       = false
   host                   = module.gke.gke_cluster_endpoint
   token                  = module.gke.google_client_config_access_token
   cluster_ca_certificate = base64decode(module.gke.gke_cluster_cluster_ca_certificate)

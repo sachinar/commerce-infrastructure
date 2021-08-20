@@ -180,3 +180,150 @@ variable "default_max_pods_per_node" {
   description = "The maximum number of pods to schedule per node"
   default     = 64
 }
+
+####################### DB Variables ########################
+variable "random_instance_name" {
+  type        = bool
+  description = "Sets random suffix at the end of the Cloud SQL resource name"
+  default     = false
+}
+
+// required
+variable "database_version" {
+  description = "The database version to use"
+  type        = string
+}
+
+variable "database_instance_name" {
+  description = "The database version to use"
+  type        = string
+}
+
+variable "inventory_database" {
+  description = "The database to use"
+  type        = string
+}
+
+variable "inventory_read_replicas" {
+  type        = list(map(any))
+  description = "read replica instance"
+  default     = []
+}
+
+variable "tier" {
+  description = "The tier for the master instance."
+  type        = string
+  default     = "db-f1-micro"
+}
+
+variable "postfix_length" {
+  description = "the length of random string to be suffix for database name"
+  type        = number
+}
+
+variable "db_master_region" {
+  type        = string
+  description = "The region for the master instance, it should be something like: `us-central1-a`, `us-east1-c`."
+}
+
+variable "db_tier" {
+  type = string
+}
+
+variable "db_disk_size" {
+  description = "The size of DB data disk, in GB"
+  type        = string
+}
+
+variable "db_backup_enabled" {
+  description = "True if backup configuration is enabled"
+  type        = string
+}
+
+variable "db_backup_start_time" {
+  description = "HH:MM format time indicating when the backup configuration starts"
+  type        = string
+}
+
+variable "db_availability_type" {
+  description = "Specifies whether the DB instance should be set up for high availability (REGIONAL) or single zone (ZONAL)"
+  type        = string
+}
+
+variable "db_master_zone" {
+  type        = string
+  description = "The zone for the master instance, it should be something like: `us-central1-a`, `us-east1-c`."
+}
+
+variable "activation_policy" {
+  description = "The activation policy for the master instance.Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`."
+  type        = string
+  default     = "ALWAYS"
+}
+
+variable "availability_type" {
+  description = "The availability type for the master instance.This is only used to set up high availability for the PostgreSQL instance. Can be either `ZONAL` or `REGIONAL`."
+  type        = string
+  default     = "ZONAL"
+}
+
+variable "disk_autoresize" {
+  description = "Configuration to increase storage size."
+  type        = bool
+  default     = true
+}
+
+variable "disk_size" {
+  description = "The disk size for the master instance."
+  default     = 10
+}
+
+variable "disk_type" {
+  description = "The disk type for the master instance."
+  type        = string
+  default     = "PD_SSD"
+}
+
+variable "pricing_plan" {
+  description = "The pricing plan for the master instance."
+  type        = string
+  default     = "PER_USE"
+}
+
+variable "maintenance_window_day" {
+  description = "The day of week (1-7) for the master instance maintenance."
+  type        = number
+  default     = 1
+}
+
+variable "maintenance_window_hour" {
+  description = "The hour of day (0-23) maintenance window for the master instance maintenance."
+  type        = number
+  default     = 23
+}
+
+variable "maintenance_window_update_track" {
+  description = "The update track of maintenance window for the master instance maintenance.Can be either `canary` or `stable`."
+  type        = string
+  default     = "canary"
+}
+
+variable "database_flags" {
+  description = "The database flags for the master instance. See [more details](https://cloud.google.com/sql/docs/postgres/flags)"
+  type = list(object({
+    name  = string
+    value = string
+  }))
+  default = []
+}
+
+variable "insights_config" {
+  description = "The insights_config settings for the database."
+  type = object({
+    query_string_length     = number
+    record_application_tags = bool
+    record_client_address   = bool
+  })
+  default = null
+}
+
