@@ -38,35 +38,37 @@ jobs:
 
 ################### Staging apply ##################################
 
-#   apply-staging:
-#     name: 'Install Infra Staging'
-#     runs-on: ubuntu-latest
-#     environment: staging
-# #    if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
+  apply-staging:
+    name: 'Install Infra Staging'
+    runs-on: ubuntu-latest
+    environment: staging
+#    if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
 
-#     defaults:
-#       run:
-#         shell: bash
+    defaults:
+      run:
+        shell: bash
     
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@v2
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
 
-#     - name: Set up private repo access
-#       uses: fusion-engineering/setup-git-credentials@v2
-#       with:
-#         credentials: ${{secrets.CI_TOKEN}}
+    - name: Set up private repo access
+      uses: fusion-engineering/setup-git-credentials@v2
+      with:
+        credentials: ${{secrets.CI_TOKEN}}
     
-#     - name: apply-staging
-#       uses: dflook/terraform-apply@v1
-#       env:
-#         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
-#         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-#       with:
-#         path: ./
-#         var_file: environment/staging/variables.tfvars
-#         label: staging
-#         backend_config_file: environment/staging/gcs-bucket.tfvars
+    - name: apply-staging
+      uses: dflook/terraform-apply@v1
+      env:
+        GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+        TERRAFORM_HTTP_CREDENTIALS: |
+          github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
+      with:
+        path: ./
+        var_file: environment/staging/variables.tfvars
+        label: staging
+        backend_config_file: environment/staging/gcs-bucket.tfvars
 
 
 # ################### Sandbox apply ##################################
