@@ -51,11 +51,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Set up private repo access
-      uses: fusion-engineering/setup-git-credentials@v2
-      with:
-        credentials: ${{secrets.CI_TOKEN}}
     
     - name: apply-staging
       uses: dflook/terraform-apply@v1
