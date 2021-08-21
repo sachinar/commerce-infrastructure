@@ -40,9 +40,25 @@ cloud_nat_ports_per_vm          = "0"
 tcp_transitory_idle_timeout_sec = "30"
 
 ######### DB Postgres ####################
-postgres_ipv4_address = "10.4.0.0"
-postgres_ipv4_prefix  = "20"
+postgres_ipv4_address       = "10.4.0.0"
+postgres_ipv4_prefix        = "20"
 
+database_version            = "POSTGRES_13"
+db_master_region            = "asia-south1"
+db_master_zone              = "asia-south1-a"
+db_availability_type        = "ZONAL"
+#db_maintenance_window_day   = 7
+#db_maintenance_window_hour  = 22
+db_tier                     = "db-custom-1-3840"
+db_disk_size                = "20"
+inventory_database          = "inv"
+database_instance_name      = "inventory"
+#inventory_namespace         = "inventory"
+#inventory_secret_name       = "inventory-db-secrets"
+postfix_length              = 5
+db_backup_enabled           = "false"
+db_backup_start_time        = "22:00"
+disk_autoresize             = false
 ########## GKE VARIABLES ###########
 gke_version                       = "1.20"
 gke_preemptible                   = true
