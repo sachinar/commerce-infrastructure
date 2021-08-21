@@ -20,7 +20,7 @@ resource "random_string" "inventory_app_user_password" {
   override_special = "@#%&*()-_=+[]{}<>:?"
 }
 
-resource "random_string" "dev_team_db_passwordinventory" {
+resource "random_string" "dev_team_db_password" {
   length           = 16
   special          = true
   override_special = "@#%&*()-_=+[]{}<>:?"
@@ -87,7 +87,7 @@ module "inventory_google_postgres" {
   additional_users = [
     {
       name     = "dev-read-user"
-      password = random_string.dev_team_db_passwordinventory.result
+      password = random_string.dev_team_db_password.result
     },
   ]
 
@@ -114,7 +114,7 @@ module "inventory_google_postgres" {
 
 resource "google_dns_record_set" "inventory_postgres_a_record" {
   # Creating 'A' record for the dns zone
-  name         = inventory.postgres.${google_dns_managed_zone.private-dns-managed-zone.dns_name}"
+  name         = "inventory.postgres.${google_dns_managed_zone.private-dns-managed-zone.dns_name}"
   project      = var.project_id
   managed_zone = google_dns_managed_zone.private-dns-managed-zone.name
   type         = "A"
