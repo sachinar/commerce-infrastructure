@@ -80,7 +80,7 @@ workload_identity     = true
 enable_shielded_nodes = true
 
 # Application Deployment Service Account
-deployment_service_account_roles = ["roles/container.developer", "roles/storage.admin", "roles/cloudfunctions.admin", "roles/dataflow.admin", "roles/cloudscheduler.admin"]
+deployment_service_account_roles = ["roles/container.developer", "roles/storage.admin"]
 
 ######## CLUSTER VARIABLES ########
 gke_cluster_name          = "ebo-dev-gke-cluster"

@@ -15,13 +15,8 @@ resource "google_service_account_key" "deployment_service_account_key" {
   service_account_id = google_service_account.deployment_service_account.name
 }
 
-resource "google_kms_secret_ciphertext" "deployment_service_account_key_bucket_object" {
-  crypto_key = google_kms_crypto_key.crypto_key.id
-  plaintext  = base64decode(google_service_account_key.deployment_service_account_key.private_key)
-}
-
 resource "google_storage_bucket_object" "deployment_service_account_key_bucket_object" {
   name    = "app-deployment-${var.environment}.key"
-  content = google_kms_secret_ciphertext.deployment_service_account_key_bucket_object.ciphertext
+  content = google_service_account_key.deployment_service_account_key.private_key
   bucket  = var.project_name
 }
