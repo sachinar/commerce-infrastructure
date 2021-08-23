@@ -79,6 +79,10 @@ gke_encryption_key    = ""
 
 workload_identity     = true
 enable_shielded_nodes = true
+
+# Application Deployment Service Account
+deployment_service_account_roles = ["roles/container.developer", "roles/storage.admin", "roles/cloudfunctions.admin", "roles/dataflow.admin", "roles/cloudscheduler.admin"]
+
 ######## CLUSTER VARIABLES ########
 gke_cluster_name          = "ebo-dev-gke-cluster"
 gke_instance_type         = "n1-standard-2"
@@ -87,12 +91,6 @@ gke_auto_max_count        = 5
 gke_initial_node_count    = 1
 gke_node_pool_disk_size   = 100
 gke_max_pods_per_node     = 64
-
-######################################## GCP Service Account Variables
-variable "deployment_service_account_roles" {
-  description = "Role for deployment of application to GCP"
-  type        = set(string)
-}
 
 ############# JUMPBOX VARIABLES #######################
 jumpbox_deployment_name     = "jumpbox"
