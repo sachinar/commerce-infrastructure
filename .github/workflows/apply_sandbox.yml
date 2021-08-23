@@ -1,18 +1,16 @@
-# name: 'Install Infra Staging'
+# name: 'Install Infra Sandbox'
 
 # on:
 #   push:
 #     branches:
 #     - master
 
-# ################## Staging apply ##################################
+# ##################### Sandbox apply ##################################
 # jobs:
-
-#   apply-staging:
-#     name: 'Install Infra Staging'
+#   apply-sandbox:
+#     name: 'Install Infra Sandbox'
 #     runs-on: ubuntu-latest
-#     environment: staging
-# #    if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
+#     environment: sandbox
 
 #     defaults:
 #       run:
@@ -22,7 +20,7 @@
 #     - name: Checkout
 #       uses: actions/checkout@v2
     
-#     - name: apply-staging
+#     - name: apply-sandbox
 #       uses: dflook/terraform-apply@v1
 #       env:
 #         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
@@ -31,7 +29,6 @@
 #           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
 #       with:
 #         path: ./
-#         var_file: environment/staging/variables.tfvars
-#         label: staging
-#         backend_config_file: environment/staging/gcs-bucket.tfvars
-
+#         var_file: environment/sandbox/variables.tfvars
+#         label: sandbox
+#         backend_config_file: environment/sandbox/gcs-bucket.tfvars
