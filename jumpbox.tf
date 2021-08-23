@@ -1,8 +1,8 @@
 module "jumpbox" {
   
-#   providers = {
-#     kubernetes = kubernetes.gke
-#   }
+  providers = {
+    kubernetes = kubernetes.gke
+  }
 
   source                         = "git::https://github.com/ebomart/terraform-modules.git//jumpbox"
   jumpbox_deployment_name          = var.jumpbox_deployment_name
