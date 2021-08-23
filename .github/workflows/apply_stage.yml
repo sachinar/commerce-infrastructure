@@ -1,11 +1,11 @@
-name: 'Install Infra'
+# name: 'Install Infra'
 
-on:
-  push:
-    branches:
-    - master
+# on:
+#   push:
+#     branches:
+#     - master
 
-jobs:
+# jobs:
 
 ################### Staging apply ##################################
 
