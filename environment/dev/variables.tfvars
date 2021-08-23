@@ -78,6 +78,10 @@ gke_encryption_key    = ""
 
 workload_identity     = true
 enable_shielded_nodes = true
+
+# Application Deployment Service Account
+deployment_service_account_roles = ["roles/container.developer", "roles/storage.admin"]
+
 ######## CLUSTER VARIABLES ########
 gke_cluster_name          = "ebo-dev-gke-cluster"
 gke_instance_type         = "n1-standard-2"

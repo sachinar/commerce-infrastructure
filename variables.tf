@@ -327,6 +327,11 @@ variable "insights_config" {
   default = null
 }
 
+variable "deployment_service_account_roles" {
+  description = "Role for deployment of application to GCP"
+  type        = set(string)
+}
+
 ########## JUMPBOX VARIABLES ###############
 
 variable "jumpbox_deployment_name" {
