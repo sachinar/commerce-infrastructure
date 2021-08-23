@@ -22,7 +22,6 @@ jobs:
         shell: bash
     
     steps:
-    - run: git tag ${{ github.event.inputs.version }}
     - name: Checkout
       uses: actions/checkout@v2
 
