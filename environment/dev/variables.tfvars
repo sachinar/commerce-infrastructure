@@ -28,7 +28,6 @@ google_service_apis = [
   "iap.googleapis.com",
 ]
 
-deployment_service_account_roles = deployment_service_account_roles = ["roles/container.developer", "roles/storage.admin", "roles/cloudfunctions.admin", "roles/dataflow.admin", "roles/cloudscheduler.admin"]
 ######## GCP NETWORK VARIABLES ############
 subnet_ip_cidr_range               = "10.0.0.0/16" 
 services_secondary_range_name      = "service-ip-range"
