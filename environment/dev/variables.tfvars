@@ -28,6 +28,7 @@ google_service_apis = [
   "iap.googleapis.com",
 ]
 
+deployment_service_account_roles = deployment_service_account_roles = ["roles/container.developer", "roles/storage.admin", "roles/cloudfunctions.admin", "roles/dataflow.admin", "roles/cloudscheduler.admin"]
 ######## GCP NETWORK VARIABLES ############
 subnet_ip_cidr_range               = "10.0.0.0/16" 
 services_secondary_range_name      = "service-ip-range"
@@ -86,6 +87,12 @@ gke_auto_max_count        = 5
 gke_initial_node_count    = 1
 gke_node_pool_disk_size   = 100
 gke_max_pods_per_node     = 64
+
+######################################## GCP Service Account Variables
+variable "deployment_service_account_roles" {
+  description = "Role for deployment of application to GCP"
+  type        = set(string)
+}
 
 ############# JUMPBOX VARIABLES #######################
 jumpbox_deployment_name     = "jumpbox"
