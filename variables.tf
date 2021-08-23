@@ -181,6 +181,22 @@ variable "default_max_pods_per_node" {
   default     = 64
 }
 
+variable "gke_namespaces" {
+  type        = set(string)
+  description = "Namespaces to be created after cluster creation"
+}
+
+############ LIMIT VARIABLES ################
+variable "memory_default_limit" {
+  type        = string
+  description = "default memory limit"
+}
+
+variable "cpu_default_request" {
+  type        = string
+  description = "default cpu request"
+}
+
 ####################### DB Variables ########################
 variable "random_instance_name" {
   type        = bool

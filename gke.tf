@@ -46,3 +46,41 @@ module "gke" {
 
   depends_on = [resource.google_project_iam_member.container_service_account]
 }
+
+resource "kubernetes_namespace" "gke_namespace" {
+
+  depends_on = [module.gke]
+  provider   = kubernetes.gke
+  for_each   = var.gke_namespaces
+
+  metadata {
+    annotations = {
+      name = each.key
+    }
+    name = each.key
+  }
+}
+
+resource "kubernetes_limit_range" "cluster_limit" {
+  provider = kubernetes.gke
+
+  for_each = toset(var.gke_namespaces)
+  metadata {
+    name      = "default-limit"
+    namespace = each.value
+  }
+  spec {
+    limit {
+      type = "Container"
+
+      default = {
+        memory = var.memory_default_limit
+      }
+
+      default_request = {
+        cpu    = var.cpu_default_request
+        memory = var.memory_default_limit
+      }
+    }
+  }
+}
