@@ -5,9 +5,7 @@ workflow_dispatch:
       logLevel:
         description: 'environment'     
         required: true
-        default: 'dev'
-      tags:
-        description: 'Deployment environment' 
+        default: dev
 
 jobs:
 
@@ -24,6 +22,7 @@ jobs:
         shell: bash
     
     steps:
+    - run: git tag ${{ github.event.inputs.version }}
     - name: Checkout
       uses: actions/checkout@v2
 
