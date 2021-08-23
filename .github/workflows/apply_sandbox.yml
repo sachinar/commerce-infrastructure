@@ -1,0 +1,34 @@
+# name: 'Install Infra Sandbox'
+
+# on:
+#   push:
+#     branches:
+#     - master
+
+# ##################### Sandbox apply ##################################
+# jobs:
+#   apply-sandbox:
+#     name: 'Install Infra Sandbox'
+#     runs-on: ubuntu-latest
+#     environment: sandbox
+
+#     defaults:
+#       run:
+#         shell: bash
+    
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
+    
+#     - name: apply-sandbox
+#       uses: dflook/terraform-apply@v1
+#       env:
+#         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+#         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+#         TERRAFORM_HTTP_CREDENTIALS: |
+#           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
+#       with:
+#         path: ./
+#         var_file: environment/sandbox/variables.tfvars
+#         label: sandbox
+#         backend_config_file: environment/sandbox/gcs-bucket.tfvars
