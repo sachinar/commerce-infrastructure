@@ -1,11 +1,11 @@
 name: 'Install Infra Dev'
-
-workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'environment'     
-        required: true
-        default: dev
+on:
+  workflow_dispatch:
+      inputs:
+        logLevel:
+          description: 'environment'     
+          required: true
+          default: dev
 
 jobs:
 
