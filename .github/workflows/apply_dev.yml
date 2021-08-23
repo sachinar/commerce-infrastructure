@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
       inputs:
         logLevel:
-          description: 'environment'     
+          description: environment   
           required: true
           default: dev
 
@@ -15,7 +15,7 @@ jobs:
     name: 'Install Infra DEV'
     runs-on: ubuntu-latest
     environment: dev
-    if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
+    # if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
 
     defaults:
       run:
