@@ -327,3 +327,38 @@ variable "insights_config" {
   default = null
 }
 
+########## JUMPBOX VARIABLES ###############
+
+variable "jumpbox_deployment_name" {
+  type        = string
+  description = "Jumpbox application name"
+}
+
+variable "jumpbox_namespace" {
+  type        = string
+  description = "Kubernetes namespace to use to deploy Jumpbox"
+  default     = "default"
+}
+
+variable "jumpbox_number_of_replicas" {
+  type        = number
+  description = "Number of replicas of our jumpbox"
+  default     = 1
+}
+
+variable "jumpbox_docker_image" {
+  type        = string
+  description = "Docker image name of our jumpbox container"
+}
+
+variable "jumpbox_docker_image_tag" {
+  type        = string
+  description = "Docker image tag of our jumpbox container"
+}
+
+variable "jumpbox_docker_image_policy" {
+  type        = string
+  description = "Docker image policy of our jumpbox container (Always, Never, IfNotPresent)"
+}
+
+
