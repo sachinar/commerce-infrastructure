@@ -82,6 +82,10 @@ enable_shielded_nodes = true
 # Application Deployment Service Account
 deployment_service_account_roles = ["roles/container.developer", "roles/storage.admin"]
 
+######### LIMIT RANGE ###################
+memory_default_limit = "1G"
+cpu_default_request  = "500m"
+
 ######## CLUSTER VARIABLES ########
 gke_cluster_name          = "ebo-dev-gke-cluster"
 gke_instance_type         = "n1-standard-2"
@@ -90,7 +94,7 @@ gke_auto_max_count        = 5
 gke_initial_node_count    = 1
 gke_node_pool_disk_size   = 100
 gke_max_pods_per_node     = 64
-
+gke_namespaces            = ["inventory"]
 ############# JUMPBOX VARIABLES #######################
 jumpbox_deployment_name     = "jumpbox"
 jumpbox_namespace           = "default"
