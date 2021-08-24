@@ -5,7 +5,7 @@ resource "google_compute_firewall" "istio_rule" {
   priority      = 1000
   direction     = "INGRESS"
   source_ranges = [var.master_ipv4_cidr_block]
-  target_tags   = [var.target_tags]
+  target_tags   = svar.target_tags
 
   allow {
     protocol = "tcp"
