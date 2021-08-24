@@ -48,6 +48,10 @@ variable "services_ipv4_cidr_block" {
   description = "Services IP ranges for GKE  cluster"
 }
 
+variable "target_tags" {
+  description = "target tags for Istio port 15017 white listing"
+  type        = list(string)
+}
 ######### NAT CONFIGURATION ###################
 variable "cloud_nat_ports_per_vm" {
   description = "The minimum number of ports per VM for cloud nat"
