@@ -47,6 +47,11 @@ module "gke" {
   depends_on = [resource.google_project_iam_member.container_service_account]
 }
 
+resource "google_compute_address" "istio_ingress_ip" {
+  name         = "${var.environment}-cluster-ip"
+  address_type = "EXTERNAL"
+}
+
 resource "kubernetes_namespace" "gke_namespace" {
 
   depends_on = [module.gke]
