@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "gke_namespace" {
+resource "kubernetes_namespace" "istio_namespace" {
 
   depends_on = [module.gke]
   provider   = kubernetes.gke
