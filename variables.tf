@@ -190,6 +190,10 @@ variable "gke_namespaces" {
   description = "Namespaces to be created after cluster creation"
 }
 
+variable "istio_namespaces" {
+  type        = set(string)
+  description = "Namespaces for istio to be created after cluster creation"
+}
 ############ LIMIT VARIABLES ################
 variable "memory_default_limit" {
   type        = string

@@ -95,7 +95,8 @@ gke_auto_max_count        = 5
 gke_initial_node_count    = 1
 gke_node_pool_disk_size   = 100
 gke_max_pods_per_node     = 64
-gke_namespaces            = ["inventory","istio-operator"]
+gke_namespaces            = ["inventory"]
+istio_namespaces          = ["istio-operator"]  
 ############# JUMPBOX VARIABLES #######################
 jumpbox_deployment_name     = "jumpbox"
 jumpbox_namespace           = "default"
