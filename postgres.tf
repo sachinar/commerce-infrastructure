@@ -29,7 +29,7 @@
 # module "inventory_google_postgres" {
 
 #   source               = "git::https://github.com/terraform-google-modules/terraform-google-sql-db//modules/postgresql"
-#   name                 = "${var.database_instance_name}-${random_id.inventory_postgres_name_postfix.hex}"
+#   name                 = "${var.database_instance_name}"
 #   random_instance_name = true
 #   project_id           = var.project_id
 #   database_version     = var.database_version
