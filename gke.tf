@@ -62,6 +62,12 @@ resource "kubernetes_namespace" "gke_namespace" {
     annotations = {
       name = each.key
     }
+
+  labels = {
+      project         = var.project_name
+      istio-injection = "enabled"
+    }
+
     name = each.key
   }
 }
