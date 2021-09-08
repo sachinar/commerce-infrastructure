@@ -15,7 +15,7 @@ resource "google_service_account_key" "pull_service_account_key" {
 }
 
 resource "google_storage_bucket_object" "pull_service_account_key_bucket_object" {
-  name    = "app-deployment-${var.environment}.key"
+  name    = "pull-gcr-${var.environment}.key"
   content = google_service_account_key.pull_service_account_key.private_key
   bucket  = var.project_name
 }
