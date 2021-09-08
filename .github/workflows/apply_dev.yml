@@ -37,6 +37,5 @@ jobs:
         var_file: environment/dev/variables.tfvars
         label: dev
         backend_config_file: environment/dev/gcs-bucket.tfvars
-        variables: TF_VAR_pull_gcr_auth=${{ secrets.PULL_GCR_AUTH }}
         auto_approve: true
 

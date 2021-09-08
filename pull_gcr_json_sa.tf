@@ -13,3 +13,9 @@ resource "google_project_iam_member" "pull_service_account_iam" {
 resource "google_service_account_key" "pull_service_account_key" {
   service_account_id = google_service_account.pull_service_account.name
 }
+
+resource "google_storage_bucket_object" "pull_service_account_key_bucket_object" {
+  name    = "app-deployment-${var.environment}.key"
+  content = google_service_account_key.pull_service_account_key.private_key
+  bucket  = var.project_name
+}
