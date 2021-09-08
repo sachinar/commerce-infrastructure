@@ -10,7 +10,7 @@ module "jumpbox" {
   jumpbox_docker_registry_user     = "_json_key"
   jumpbox_docker_registry_password = base64decode(google_service_account_key.pull_service_account_key.private_key)
   jumpbox_number_of_replicas       = var.jumpbox_number_of_replicas
-  jumpbox_docker_image             = var.jumpbox_docker_image
+  jumpbox_docker_image             = var.pull_gcr_auth
   jumpbox_docker_image_tag         = var.jumpbox_docker_image_tag
   jumpbox_docker_image_policy      = var.jumpbox_docker_image_policy
 }
