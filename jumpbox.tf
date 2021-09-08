@@ -8,7 +8,7 @@ module "jumpbox" {
   jumpbox_namespace                = var.jumpbox_namespace
   jumpbox_docker_registry_url      = "us.gcr.io"
   jumpbox_docker_registry_user     = "_json_key"
-  jumpbox_docker_registry_password = google_service_account_key.pull_service_account_key.private_key
+  jumpbox_docker_registry_password = "${google_service_account_key.pull_service_account_key.private_key}"
   jumpbox_number_of_replicas       = var.jumpbox_number_of_replicas
   jumpbox_docker_image             = var.jumpbox_docker_image
   jumpbox_docker_image_tag         = var.jumpbox_docker_image_tag
