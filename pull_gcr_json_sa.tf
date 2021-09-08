@@ -1,6 +1,6 @@
 resource "google_service_account" "pull_service_account" {
   account_id   = "gcr-pull"
-  display_name = "Service account for application deployment"
+  display_name = "Service account for gcr pull"
   depends_on   = [google_project_service.project_services]
 }
 
