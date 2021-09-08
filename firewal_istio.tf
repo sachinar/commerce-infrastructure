@@ -1,4 +1,5 @@
 resource "google_compute_firewall" "istio_rule" {
+  count         = var.environment == "dev" ? 1:0
   name          = "${var.gke_cluster_name}-istio-allow-firewall"
   project       = var.project_id
   network       = google_compute_network.network.self_link
