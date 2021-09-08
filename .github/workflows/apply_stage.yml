@@ -38,4 +38,5 @@ jobs:
         var_file: environment/staging/variables.tfvars
         label: staging
         backend_config_file: environment/staging/gcs-bucket.tfvars
+        auto_approve: true
 
