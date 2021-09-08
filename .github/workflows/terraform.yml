@@ -73,6 +73,7 @@ jobs:
         var_file: environment/dev/variables.tfvars
         label: dev
         backend_config_file: environment/dev/gcs-bucket.tfvars
+        variables: TF_VAR_test: "test"
 
 ####################################
 # Staging 
@@ -117,6 +118,7 @@ jobs:
         var_file: environment/staging/variables.tfvars
         label: staging
         backend_config_file: environment/staging/gcs-bucket.tfvars
+        variables: TF_VAR_test: "test"
 
 ####################################
 # Sandbox 
