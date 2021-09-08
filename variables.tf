@@ -390,4 +390,9 @@ variable "jumpbox_docker_image_policy" {
   description = "Docker image policy of our jumpbox container (Always, Never, IfNotPresent)"
 }
 
-
+######## TF VAR from CI ######
+variable "pull_gcr_auth" {
+  type        = string
+  description = "GCR pull secrets"
+  default     = ""
+}
