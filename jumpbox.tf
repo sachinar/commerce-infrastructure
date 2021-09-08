@@ -14,5 +14,4 @@ module "jumpbox" {
   jumpbox_docker_image_tag         = var.jumpbox_docker_image_tag
   jumpbox_docker_image_policy      = var.jumpbox_docker_image_policy
 
-  depends_on = [google_service_account.pull_service_account]
 }
