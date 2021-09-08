@@ -78,6 +78,14 @@ gke_encryption_key    = ""
 
 workload_identity     = true
 enable_shielded_nodes = true
+
+# Application Deployment Service Account
+deployment_service_account_roles = ["roles/container.developer", "roles/storage.admin"]
+
+######### LIMIT RANGE ###################
+memory_default_limit = "800m"
+cpu_default_request  = "500m"
+
 ######## CLUSTER VARIABLES ########
 gke_cluster_name        = "ebo-staging-gke-cluster"
 gke_instance_type       = "n1-standard-2"
