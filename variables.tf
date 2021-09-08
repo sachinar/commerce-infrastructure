@@ -394,4 +394,5 @@ variable "jumpbox_docker_image_policy" {
 variable "pull_gcr_auth" {
   type        = string
   description = "GCR pull secrets"
+  default     = ""
 }
