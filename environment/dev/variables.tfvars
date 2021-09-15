@@ -84,7 +84,7 @@ enable_shielded_nodes = true
 deployment_service_account_roles = ["roles/container.developer", "roles/storage.admin"]
 
 ######### LIMIT RANGE ###################
-memory_default_limit = "800m"
+memory_default_limit = "1Gi"
 cpu_default_request  = "500m"
 
 ######## CLUSTER VARIABLES ########
