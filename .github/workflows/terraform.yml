@@ -12,10 +12,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Super-Linter
-      uses: docker://ghcr.io/github/super-linter:slim-v4
-      env:
-        FILTER_REGEX_INCLUDE: "./*.tf"
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: docker://wata727/tflint:0.29.0
 
   validate:
     name: 'Validate Configuration'
