@@ -6,8 +6,24 @@ on:
   
 jobs:
 
+  terrascan_job:
+    runs-on: ubuntu-latest
+    name: terrascan-action
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Run Terrascan
+      id: terrascan
+      uses: accurics/terrascan-action@main
+      with:
+        iac_type: 'terraform'
+        policy_type: 'gcp'
+        only_warn: true
+        verbose: true 
+
   validate:
     name: 'Validate Configuration'
+    needs: terrascan_job
     runs-on: ubuntu-latest
   
     steps:
@@ -22,22 +38,6 @@ jobs:
           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
       with:
         path: ./
-
-  terrascan_job:
-    runs-on: ubuntu-latest
-    name: terrascan-action
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Run Terrascan
-      id: terrascan
-      uses: accurics/terrascan-action@main
-      with:
-        iac_type: 'terraform'
-        iac_version: 'v1.0.5'
-        policy_type: 'gcp'
-        only_warn: true
-        verbose: true 
 
   terraform:
     name: 'Pre Setup DEV'
