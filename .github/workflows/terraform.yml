@@ -21,7 +21,8 @@ jobs:
   validate:
     name: 'Validate Configuration'
     needs: terraform_lint
-    runs-on: ubuntu-latestlint  steps:
+    runs-on: ubuntu-latest
+    steps:
     - name: Validate Terraform
       uses: actions/checkout@v2
 
