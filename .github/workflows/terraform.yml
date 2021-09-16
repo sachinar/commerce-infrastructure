@@ -19,7 +19,8 @@ jobs:
         iac_type: 'terraform'
         policy_type: 'gcp'
         only_warn: true
-        verbose: true 
+        verbose: true
+        non_recursive: true
 
   validate:
     name: 'Validate Configuration'
