@@ -4,21 +4,10 @@ on:
   pull_request:
     branches:
   
-jobs:
+jobs:  
   terraform_lint:
     runs-on: ubuntu-latest
-    name: terraform lint
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Run Lint  
-      uses: terraform-linters/setup-tflint@v1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-  
-  terrascan_job:
-    runs-on: ubuntu-latest
-    name: terrascan-action
+    name: terralint-action
     needs: terraform_lint
     steps:
     - name: Checkout repository
@@ -31,10 +20,8 @@ jobs:
 
   validate:
     name: 'Validate Configuration'
-    needs: terrascan_job
-    runs-on: ubuntu-latest
-  
-    steps:
+    needs: terraform_lint
+    runs-on: ubuntu-latestlint  steps:
     - name: Validate Terraform
       uses: actions/checkout@v2
 
