@@ -15,12 +15,14 @@ jobs:
       uses: terraform-linters/setup-tflint@v1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-  # terrascan_job:
-  #   runs-on: ubuntu-latest
-  #   name: terrascan-action
-  #   steps:
-  #   - name: Checkout repository
-  #     uses: actions/checkout@v2
+  
+  terrascan_job:
+    runs-on: ubuntu-latest
+    name: terrascan-action
+    needs: terraform_lint
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
   #   - name: Run Terrascan
   #     id: terrascan
   #     uses: accurics/terrascan-action@main
@@ -33,7 +35,7 @@ jobs:
 
   validate:
     name: 'Validate Configuration'
-    needs: terrascan_lint
+    needs: terrascan_job
     runs-on: ubuntu-latest
   
     steps:
