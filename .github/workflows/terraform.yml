@@ -5,26 +5,36 @@ on:
     branches:
   
 jobs:
+  terraform_lint:
+    runs-on; ubuntu-latest
+    name: terraform lint
 
-  terrascan_job:
-    runs-on: ubuntu-latest
-    name: terrascan-action
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Run Terrascan
-      id: terrascan
-      uses: accurics/terrascan-action@main
+    - name: Run Lint  
+      uses: terraform-linters/setup-tflint@v1
       with:
-        iac_type: 'terraform'
-        policy_type: 'gcp'
-        only_warn: true
-        verbose: true
-        non_recursive: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+  # terrascan_job:
+  #   runs-on: ubuntu-latest
+  #   name: terrascan-action
+  #   steps:
+  #   - name: Checkout repository
+  #     uses: actions/checkout@v2
+  #   - name: Run Terrascan
+  #     id: terrascan
+  #     uses: accurics/terrascan-action@main
+  #     with:
+  #       iac_type: 'terraform'
+  #       policy_type: 'gcp'
+  #       only_warn: true
+  #       verbose: true
+  #       non_recursive: true
 
   validate:
     name: 'Validate Configuration'
-    needs: terrascan_job
+    needs: terrascan_lint
     runs-on: ubuntu-latest
   
     steps:
