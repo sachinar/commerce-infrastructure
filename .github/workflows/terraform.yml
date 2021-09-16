@@ -23,15 +23,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-  #   - name: Run Terrascan
-  #     id: terrascan
-  #     uses: accurics/terrascan-action@main
-  #     with:
-  #       iac_type: 'terraform'
-  #       policy_type: 'gcp'
-  #       only_warn: true
-  #       verbose: true
-  #       non_recursive: true
+    - name: Super-Linter
+      uses: docker://ghcr.io/github/super-linter:slim-v4
+      env:
+        FILTER_REGEX_INCLUDE: "./*.tf"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   validate:
     name: 'Validate Configuration'
