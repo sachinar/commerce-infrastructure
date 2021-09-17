@@ -35,6 +35,7 @@ services_ipv4_cidr_block           = "10.1.0.0/20"
 cluster_secondary_range_name       = "cluster-pod-ip-range"
 cluster_ipv4_cidr_block            = "10.2.0.0/16"
 
+target_tags                        = ["gke-ebo-staging-gke-cluster-8b587279-node"]
 ######### NAT CONFIGURATION ###################
 cloud_nat_ports_per_vm          = "1024"
 tcp_transitory_idle_timeout_sec = "60"
@@ -45,6 +46,22 @@ log_config_filter               = "ERRORS_ONLY"
 postgres_ipv4_address = "10.4.0.0"
 postgres_ipv4_prefix  = "20"
 
+database_version            = "POSTGRES_13"
+db_master_region            = "asia-south1"
+db_master_zone              = "asia-south1-a"
+db_availability_type        = "REGIONAL"
+#db_maintenance_window_day   = 7
+#db_maintenance_window_hour  = 22
+db_tier                     = "db-custom-1-3840"
+db_disk_size                = "20"
+inventory_database          = "inventory"
+database_instance_name      = "inventory"
+#inventory_namespace         = "inventory"
+#inventory_secret_name       = "inventory-db-secrets"
+postfix_length              = 5
+db_backup_enabled           = "false"
+db_backup_start_time        = "22:00"
+disk_autoresize             = false
 ########## GKE VARIABLES ###########
 gke_version                       = "1.20"
 gke_preemptible                   = true
@@ -64,6 +81,14 @@ gke_encryption_key    = ""
 
 workload_identity     = true
 enable_shielded_nodes = true
+
+# Application Deployment Service Account
+deployment_service_account_roles = ["roles/container.developer", "roles/storage.admin"]
+
+######### LIMIT RANGE ###################
+memory_default_limit = "1Gi"
+cpu_default_request  = "500m"
+
 ######## CLUSTER VARIABLES ########
 gke_cluster_name          = "ebo-prod-gke-cluster"
 gke_instance_type         = "n1-standard-2"
@@ -72,3 +97,15 @@ gke_auto_max_count        = 5
 gke_initial_node_count    = 1
 gke_node_pool_disk_size   = 100
 gke_max_pods_per_node     = 64
+gke_namespaces            = ["inventory","ebo"]
+istio_namespaces          = ["istio-operator", "istio-system"]
+############# JUMPBOX VARIABLES #######################
+jumpbox_deployment_name     = "jumpbox"
+jumpbox_namespace           = "default"
+# jumpbox_docker_registry_url = "registry.gitlab.com"
+# jumpbox_docker_registry_user     = "to-be-provided-by-our-pipeline"
+# jumpbox_docker_registry_password = "to-be-provided-by-our-pipeline"
+jumpbox_number_of_replicas  = 1
+jumpbox_docker_image        = "us.gcr.io/ebo-dev-321910/jumpbox@sha256"
+jumpbox_docker_image_tag    = "2029b0e087aea9f062adecde6f780b63778a1d52561d16cbb0e358d2a3368dc2"
+jumpbox_docker_image_policy = "Always"
