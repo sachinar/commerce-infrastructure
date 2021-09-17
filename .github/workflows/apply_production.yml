@@ -12,7 +12,6 @@ jobs:
     name: 'Install Infra Production'
     runs-on: ubuntu-latest
     environment: prod
-#    if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
 
     defaults:
       run:
@@ -34,3 +33,4 @@ jobs:
         var_file: environment/production/variables.tfvars
         label: production
         backend_config_file: environment/production/gcs-bucket.tfvars
+        auto_approve: true
