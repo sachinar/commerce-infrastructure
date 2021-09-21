@@ -102,7 +102,7 @@ module "inventory_google_postgres" {
 
 resource "google_dns_record_set" "inventory_postgres_a_record" {
   # Creating 'A' record for the dns zone
-  name         = "inventory.postgres.${google_dns_managed_zone.private-dns-managed-zone.dns_name}"
+  name         = "ibo.postgres.${google_dns_managed_zone.private-dns-managed-zone.dns_name}"
   project      = var.project_id
   managed_zone = google_dns_managed_zone.private-dns-managed-zone.name
   type         = "A"
