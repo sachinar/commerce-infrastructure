@@ -28,12 +28,12 @@ resource "random_string" "dev_team_db_password" {
 
 module "inventory_google_postgres" {
 
-  source               = "git::https://github.com/terraform-google-modules/terraform-google-sql-db//modules/postgresql"
-  name                 = var.database_instance_name
-  random_instance_name = true
-  project_id           = var.project_id
-  database_version     = var.database_version
-  region               = var.db_master_region
+  source                          = "git::https://github.com/terraform-google-modules/terraform-google-sql-db//modules/postgresql"
+  name                            = var.database_instance_name
+  random_instance_name            = true
+  project_id                      = var.project_id
+  database_version                = var.database_version
+  region                          = var.db_master_region
 
   // Master configurations
   tier                            = var.db_tier
@@ -79,7 +79,13 @@ module "inventory_google_postgres" {
   db_charset   = "UTF8"
   db_collation = "en_US.UTF8"
 
-  additional_databases = ["inventory-qa"]
+  additional_databases = [
+    {
+      name      = "${var.inventory_database}-qa"
+      charset   = "UTF8"
+      collation = "en_US.UTF8"
+    },
+  ]
 
   user_name     = "inventory-${random_string.inventory_app_user_name.result}"
   user_password = random_string.inventory_app_user_password.result
@@ -94,24 +100,6 @@ module "inventory_google_postgres" {
   depends_on = [google_service_networking_connection.postgres_private_vpc_connection]
 }
 
-resource "kubernetes_secret" "inventory_app_secret" {
-  provider = kubernetes.gke
-  metadata {
-    name      = var.inventory.secret_name
-    namespace = var.inventory.namespace
-  }
-
-  data = {
-    DB_HOST     = google_dns_record_set.inventory.postgres_a_record.name
-    DB_NAME     = var.inventory.database
-    DB_PORT     = "5432"
-    DB_USER     = "inventory-${random_string_inventory.app_user_name.result}"
-    DB_PASSWORD = random_string.inventory_app_user_password.result
-  }
-
-  depends_on = [module.gke]
-}
-
 resource "google_dns_record_set" "inventory_postgres_a_record" {
   # Creating 'A' record for the dns zone
   name         = "inventory.postgres.${google_dns_managed_zone.private-dns-managed-zone.dns_name}"
@@ -121,4 +109,24 @@ resource "google_dns_record_set" "inventory_postgres_a_record" {
   ttl          = 300
   rrdatas      = [module.inventory_google_postgres.private_ip_address]
 }
+
+resource "kubernetes_secret" "inventory_app_secret" {
+  provider = kubernetes.gke
+  metadata {
+    name      = var.inventory_secret_name
+    namespace = var.inventory_namespace
+  }
+
+  data = {
+    DB_HOST     = google_dns_record_set.inventory_postgres_a_record.name
+    DB_NAME     = var.inventory_database
+    DB_PORT     = "5432"
+    DB_USER     = "inventory-${random_string.inventory_app_user_name.result}"
+    DB_PASSWORD = random_string.inventory_app_user_password.result
+  }
+
+  depends_on = [module.gke]
+}
+
+
 
