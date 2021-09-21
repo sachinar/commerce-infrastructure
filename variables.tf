@@ -223,6 +223,16 @@ variable "database_instance_name" {
   type        = string
 }
 
+variable "inventory_namespace" {
+  description = "The namespace to use"
+  type        = string
+}
+
+variable "inventory_secret_name" {
+  description = "The the secret name to use"
+  type        = string
+}
+
 variable "inventory_database" {
   description = "The database to use"
   type        = string
