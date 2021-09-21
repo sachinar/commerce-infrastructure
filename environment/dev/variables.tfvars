@@ -40,7 +40,7 @@ target_tags                        = ["gke-ebo-dev-gke-cluster-647f4566-node"]
 cloud_nat_ports_per_vm          = "0"
 tcp_transitory_idle_timeout_sec = "30"
 
-######### DB Postgres ####################
+######### DB Postgres inventory ####################
 postgres_ipv4_address       = "10.4.0.0"
 postgres_ipv4_prefix        = "20"
 
@@ -60,6 +60,10 @@ postfix_length              = 5
 db_backup_enabled           = "false"
 db_backup_start_time        = "22:00"
 disk_autoresize             = false
+redis_tier              = "BASIC"
+redis_version           = "REDIS_5_0"
+inventory_redis_memory_size_db    = 1
+inventory_redis_reserved_ip_range = "10.100.0.0/24"
 ########## GKE VARIABLES ###########
 gke_version                       = "1.20"
 gke_preemptible                   = true

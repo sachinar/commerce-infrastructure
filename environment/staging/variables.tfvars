@@ -60,6 +60,9 @@ postfix_length              = 5
 db_backup_enabled           = "false"
 db_backup_start_time        = "22:00"
 disk_autoresize             = false
+redis_version                     = "REDIS_5_0"
+inventory_redis_memory_size_db    = 1
+inventory_redis_reserved_ip_range = "10.100.0.0/24"
 ########## GKE VARIABLES ###########
 gke_version                       = "1.20"
 gke_preemptible                   = true
