@@ -28,12 +28,12 @@ resource "random_string" "dev_team_db_password" {
 
 module "inventory_google_postgres" {
 
-  source                          = "git::https://github.com/terraform-google-modules/terraform-google-sql-db//modules/postgresql"
-  name                            = var.database_instance_name
-  random_instance_name            = true
-  project_id                      = var.project_id
-  database_version                = var.database_version
-  region                          = var.db_master_region
+  source               = "git::https://github.com/terraform-google-modules/terraform-google-sql-db//modules/postgresql"
+  name                 = var.database_instance_name
+  random_instance_name = true
+  project_id           = var.project_id
+  database_version     = var.database_version
+  region               = var.db_master_region
 
   // Master configurations
   tier                            = var.db_tier

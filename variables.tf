@@ -19,8 +19,8 @@ variable "project_id" {
 }
 
 variable "region" {
-    type       = string
-    description = "GCP project region"
+  type        = string
+  description = "GCP project region"
 }
 
 variable "subnet_ip_cidr_range" {
@@ -405,4 +405,29 @@ variable "pull_gcr_auth" {
   type        = string
   description = "GCR pull secrets"
   default     = ""
+}
+
+#### Redis variable ######
+variable "inventory_redis_memory_size_db" {
+  description = "Redis memory size in GiB"
+}
+
+variable "inventory_redis_reserved_ip_range" {
+  description = "The CIDR range of internal addresses that are reserved for this instance"
+}
+
+variable "redis_tier" {
+  description = "The service tier of the instance"
+  default     = "BASIC"
+}
+
+variable "redis_version" {
+  description = "The version of Redis software"
+  default     = "REDIS_4_0"
+}
+
+variable "inventory_redis_configs" {
+  type        = map(string)
+  description = "custom configs for redis"
+  default     = {}
 }
