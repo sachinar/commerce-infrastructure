@@ -238,6 +238,11 @@ variable "inventory_database" {
   type        = string
 }
 
+variable "ord_orchestation_database" {
+  description = "The database to use"
+  type        = string
+}
+
 variable "inventory_read_replicas" {
   type        = list(map(any))
   description = "read replica instance"

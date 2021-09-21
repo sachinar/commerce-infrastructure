@@ -20,6 +20,18 @@ resource "random_string" "inventory_app_user_password" {
   override_special = "@#%&*()-_=+[]{}<>:?"
 }
 
+resource "random_string" "ord_orchestrator_user_name" {
+  length  = 8
+  upper   = false
+  special = false
+}
+
+resource "random_string" "ord_orchestrator_user_password" {
+  length           = 16
+  special          = true
+  override_special = "@#%&*()-_=+[]{}<>:?"
+}
+
 resource "random_string" "dev_team_db_password" {
   length           = 16
   special          = true
@@ -85,6 +97,11 @@ module "inventory_google_postgres" {
       charset   = "UTF8"
       collation = "en_US.UTF8"
     },
+    {
+    name      = var.ord_orchestation_database
+    charset   = "UTF8"
+    collation = "en_US.UTF8"
+  },
   ]
 
   user_name     = "inventory-${random_string.inventory_app_user_name.result}"
@@ -94,6 +111,10 @@ module "inventory_google_postgres" {
     {
       name     = "dev-read-user"
       password = random_string.dev_team_db_password.result
+    },
+    {
+      name     = "ord-random_string.ord_orchestrator_user_name.result"
+      password = random_string.ord_orchestrator_user_password.result
     },
   ]
 
