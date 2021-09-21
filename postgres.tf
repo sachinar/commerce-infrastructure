@@ -20,12 +20,6 @@ resource "random_string" "inventory_app_user_password" {
   override_special = "@#%&*()-_=+[]{}<>:?"
 }
 
-resource "random_string" "ord_orchestrator_user_name" {
-  length  = 8
-  upper   = false
-  special = false
-}
-
 resource "random_string" "ord_orchestrator_user_password" {
   length           = 16
   special          = true
