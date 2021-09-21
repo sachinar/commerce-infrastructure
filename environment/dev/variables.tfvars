@@ -53,7 +53,6 @@ db_availability_type        = "ZONAL"
 db_tier                     = "db-custom-1-3840"
 db_disk_size                = "20"
 inventory_database          = "inventory"
-ord_orchestation_database   = "order-orchestration"
 database_instance_name      = "ibo-dev-db"
 inventory_namespace         = "inventory"
 inventory_secret_name       = "inventory-db-secrets"
@@ -65,6 +64,10 @@ redis_tier              = "BASIC"
 redis_version           = "REDIS_5_0"
 inventory_redis_memory_size_db    = 1
 inventory_redis_reserved_ip_range = "10.100.0.0/24"
+########## Order orchestrator DB ##############
+ord_orchestation_database   = "order-orchestration"
+ord_secret_name             = "oo-db-secrets"
+ord_namespace               = "order-orchestration"
 ########## GKE VARIABLES ###########
 gke_version                       = "1.20"
 gke_preemptible                   = true

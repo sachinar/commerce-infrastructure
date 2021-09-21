@@ -113,7 +113,7 @@ module "inventory_google_postgres" {
       password = random_string.dev_team_db_password.result
     },
     {
-      name     = "ord-random_string.ord_orchestrator_user_name.result"
+      name     = "ord-${random_string.ord_orchestrator_user_name.result}"
       password = random_string.ord_orchestrator_user_password.result
     },
   ]
@@ -149,5 +149,23 @@ resource "kubernetes_secret" "inventory_app_secret" {
   depends_on = [module.gke]
 }
 
+# Order orchestrator
+resource "kubernetes_secret" "ord_app_secret" {
+  provider = kubernetes.gke
+  metadata {
+    name      = var.ord_secret_name
+    namespace = var.ord_namespace
+  }
+
+  data = {
+    DB_HOST     = google_dns_record_set.inventory_postgres_a_record.name
+    DB_NAME     = var.ord_orchestation_database
+    DB_PORT     = "5432"
+    DB_USER     = "ord-${random_string.ord_orchestrator_user_name.result}"
+    DB_PASSWORD = random_string.ord_orchestrator_user_password.result
+  }
+
+  depends_on = [module.gke]
+}
 
 
