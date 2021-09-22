@@ -1,2 +1,2 @@
-bucket  = "ebo-dev"
-prefix  = "terraform-state"
+bucket = "ebo-dev"
+prefix = "terraform-state"

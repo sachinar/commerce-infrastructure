@@ -92,10 +92,10 @@ module "inventory_google_postgres" {
       collation = "en_US.UTF8"
     },
     {
-    name      = var.ord_orchestation_database
-    charset   = "UTF8"
-    collation = "en_US.UTF8"
-  },
+      name      = var.ord_orchestation_database
+      charset   = "UTF8"
+      collation = "en_US.UTF8"
+    },
   ]
 
   user_name     = "inventory-${random_string.inventory_app_user_name.result}"
@@ -161,5 +161,3 @@ resource "kubernetes_secret" "ord_app_secret" {
 
   depends_on = [module.gke]
 }
-
-
