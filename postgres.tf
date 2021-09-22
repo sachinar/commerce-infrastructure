@@ -12,7 +12,7 @@ resource "random_string" "inventory_app_user_name" {
   length  = 8
   upper   = false
   special = false
-}
+} 
 
 resource "random_string" "inventory_app_user_password" {
   length           = 16
