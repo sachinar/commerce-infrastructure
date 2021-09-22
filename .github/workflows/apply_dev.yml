@@ -38,4 +38,3 @@ jobs:
         label: dev
         backend_config_file: environment/dev/gcs-bucket.tfvars
         auto_approve: true
-

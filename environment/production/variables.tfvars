@@ -1,7 +1,7 @@
-project_id         = "ebo-prod"
-project_name       = "ebo-prod"
-project_number     = "227380419959"
-region             = "asia-south1"
+project_id     = "ebo-prod"
+project_name   = "ebo-prod"
+project_number = "227380419959"
+region         = "asia-south1"
 
 google_service_apis = [
   "clouddebugger.googleapis.com",
@@ -29,13 +29,13 @@ google_service_apis = [
 ]
 
 ######## GCP NETWORK VARIABLES ############
-subnet_ip_cidr_range               = "10.0.0.0/16" 
-services_secondary_range_name      = "service-ip-range"
-services_ipv4_cidr_block           = "10.1.0.0/20"
-cluster_secondary_range_name       = "cluster-pod-ip-range"
-cluster_ipv4_cidr_block            = "10.2.0.0/16"
+subnet_ip_cidr_range          = "10.0.0.0/16"
+services_secondary_range_name = "service-ip-range"
+services_ipv4_cidr_block      = "10.1.0.0/20"
+cluster_secondary_range_name  = "cluster-pod-ip-range"
+cluster_ipv4_cidr_block       = "10.2.0.0/16"
 
-target_tags                        = ["gke-ebo-prod-gke-cluster-87c79679-node"]
+target_tags = ["gke-ebo-prod-gke-cluster-87c79679-node"]
 ######### NAT CONFIGURATION ###################
 cloud_nat_ports_per_vm          = "1024"
 tcp_transitory_idle_timeout_sec = "60"
@@ -46,10 +46,10 @@ log_config_filter               = "ERRORS_ONLY"
 postgres_ipv4_address = "10.4.0.0"
 postgres_ipv4_prefix  = "20"
 
-database_version                  = "POSTGRES_13"
-db_master_region                  = "asia-south1"
-db_master_zone                    = "asia-south1-a"
-db_availability_type              = "REGIONAL"
+database_version     = "POSTGRES_13"
+db_master_region     = "asia-south1"
+db_master_zone       = "asia-south1-a"
+db_availability_type = "REGIONAL"
 #db_maintenance_window_day        = 7
 #db_maintenance_window_hour       = 22
 db_tier                           = "db-custom-1-3840"
@@ -67,13 +67,13 @@ redis_version                     = "REDIS_5_0"
 inventory_redis_memory_size_db    = 2
 inventory_redis_reserved_ip_range = "10.100.0.0/24"
 ########## Order orchestrator DB ##############
-ord_orchestation_database   = "order-orchestration"
-ord_secret_name             = "oo-db-secrets"
-ord_namespace               = "order-orchestration"
+ord_orchestation_database = "order-orchestration"
+ord_secret_name           = "oo-db-secrets"
+ord_namespace             = "order-orchestration"
 ########## GKE VARIABLES ###########
-gke_version                       = "1.20"
-gke_preemptible                   = true
-master_ipv4_cidr_block            = "10.3.0.0/28" 
+gke_version            = "1.20"
+gke_preemptible        = true
+master_ipv4_cidr_block = "10.3.0.0/28"
 
 daily_maintenance_window_start = "03:00"
 oauth_scopes = [
@@ -82,10 +82,10 @@ oauth_scopes = [
   "https://www.googleapis.com/auth/logging.write",
 ]
 
-environment           = "production"
+environment = "production"
 
-gke_encryption_state  = "ENCRYPTED"
-gke_encryption_key    = ""
+gke_encryption_state = "ENCRYPTED"
+gke_encryption_key   = ""
 
 workload_identity     = true
 enable_shielded_nodes = true
@@ -98,18 +98,18 @@ memory_default_limit = "1Gi"
 cpu_default_request  = "500m"
 
 ######## CLUSTER VARIABLES ########
-gke_cluster_name          = "ebo-prod-gke-cluster"
-gke_instance_type         = "n1-standard-2"
-gke_auto_min_count        = 1
-gke_auto_max_count        = 5
-gke_initial_node_count    = 1
-gke_node_pool_disk_size   = 100
-gke_max_pods_per_node     = 64
-gke_namespaces            = ["inventory","ebo"]
-istio_namespaces          = ["istio-operator", "istio-system"]
+gke_cluster_name        = "ebo-prod-gke-cluster"
+gke_instance_type       = "n1-standard-2"
+gke_auto_min_count      = 1
+gke_auto_max_count      = 5
+gke_initial_node_count  = 1
+gke_node_pool_disk_size = 100
+gke_max_pods_per_node   = 64
+gke_namespaces          = ["inventory", "ebo"]
+istio_namespaces        = ["istio-operator", "istio-system"]
 ############# JUMPBOX VARIABLES #######################
-jumpbox_deployment_name     = "jumpbox"
-jumpbox_namespace           = "default"
+jumpbox_deployment_name = "jumpbox"
+jumpbox_namespace       = "default"
 # jumpbox_docker_registry_url = "registry.gitlab.com"
 # jumpbox_docker_registry_user     = "to-be-provided-by-our-pipeline"
 # jumpbox_docker_registry_password = "to-be-provided-by-our-pipeline"

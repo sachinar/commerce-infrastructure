@@ -1,7 +1,7 @@
-project_id         = "ebo-sandbox"
-project_name       = "ebo-sandbox"
-project_number     = "893143425003"
-region             = "asia-south1"
+project_id     = "ebo-sandbox"
+project_name   = "ebo-sandbox"
+project_number = "893143425003"
+region         = "asia-south1"
 
 google_service_apis = [
   "clouddebugger.googleapis.com",
@@ -29,11 +29,11 @@ google_service_apis = [
 ]
 
 ######## GCP NETWORK VARIABLES ############
-subnet_ip_cidr_range               = "10.0.0.0/16" 
-services_secondary_range_name      = "service-ip-range"
-services_ipv4_cidr_block           = "10.1.0.0/20"
-cluster_secondary_range_name       = "cluster-pod-ip-range"
-cluster_ipv4_cidr_block            = "10.2.0.0/16"
+subnet_ip_cidr_range          = "10.0.0.0/16"
+services_secondary_range_name = "service-ip-range"
+services_ipv4_cidr_block      = "10.1.0.0/20"
+cluster_secondary_range_name  = "cluster-pod-ip-range"
+cluster_ipv4_cidr_block       = "10.2.0.0/16"
 
 ######### NAT CONFIGURATION ###################
 cloud_nat_ports_per_vm          = "1024"
@@ -44,9 +44,9 @@ postgres_ipv4_address = "10.4.0.0"
 postgres_ipv4_prefix  = "20"
 
 ########## GKE VARIABLES ###########
-gke_version                       = "1.20"
-gke_preemptible                   = true
-master_ipv4_cidr_block            = "10.3.0.0/28" 
+gke_version            = "1.20"
+gke_preemptible        = true
+master_ipv4_cidr_block = "10.3.0.0/28"
 
 daily_maintenance_window_start = "03:00"
 oauth_scopes = [
@@ -55,10 +55,10 @@ oauth_scopes = [
   "https://www.googleapis.com/auth/logging.write",
 ]
 
-environment           = "sandbox"
+environment = "sandbox"
 
-gke_encryption_state  = "ENCRYPTED"
-gke_encryption_key    = ""
+gke_encryption_state = "ENCRYPTED"
+gke_encryption_key   = ""
 
 workload_identity     = true
 enable_shielded_nodes = true
