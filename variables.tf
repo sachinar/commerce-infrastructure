@@ -446,3 +446,7 @@ variable "inventory_redis_configs" {
   description = "custom configs for redis"
   default     = {}
 }
+
+variable "topic_name" {
+  description = "topic name for pub/sub"
+}
