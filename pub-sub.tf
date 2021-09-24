@@ -3,5 +3,5 @@ module "pubsub" {
   version = "~> 1.8"
 
   topic      = var.topic_name
-  project_id = var.project_name
+  project_id = var.project_id
 }
