@@ -114,3 +114,7 @@ jumpbox_number_of_replicas  = 1
 jumpbox_docker_image        = "us.gcr.io/ebo-dev-321910/jumpbox@sha256"
 jumpbox_docker_image_tag    = "2029b0e087aea9f062adecde6f780b63778a1d52561d16cbb0e358d2a3368dc2"
 jumpbox_docker_image_policy = "Always"
+
+############### PUB/SUB VARIABLES ######################
+
+topic_name                  = "topic_sample_name"
