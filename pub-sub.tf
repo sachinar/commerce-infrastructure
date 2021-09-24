@@ -4,4 +4,5 @@ module "pubsub" {
 
   topic      = var.topic_name
   project_id = var.project_id
+  push_subscriptions = []
 }
