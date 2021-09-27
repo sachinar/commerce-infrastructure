@@ -388,6 +388,12 @@ variable "jumpbox_deployment_name" {
   description = "Jumpbox application name"
 }
 
+variable "jumpbox_pull_secret_key" {
+  type        = string
+  description = "Docker image pull image_pull_secrets"
+  default     = "gcr-json-key"
+}
+
 variable "jumpbox_namespace" {
   type        = string
   description = "Kubernetes namespace to use to deploy Jumpbox"

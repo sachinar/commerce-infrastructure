@@ -13,4 +13,5 @@ module "jumpbox" {
   jumpbox_docker_image        = var.jumpbox_docker_image
   jumpbox_docker_image_tag    = var.jumpbox_docker_image_tag
   jumpbox_docker_image_policy = var.jumpbox_docker_image_policy
+  jumpbox_pull_secret_key     = var.jumpbox_pull_secret_key
 }
