@@ -37,7 +37,7 @@ cluster_ipv4_cidr_block       = "10.2.0.0/16"
 
 target_tags = ["gke-ebo-prod-gke-cluster-87c79679-node"]
 ######### NAT CONFIGURATION ###################
-cloud_nat_ports_per_vm          = "1024"
+cloud_nat_ports_per_vm          = "4032"
 tcp_transitory_idle_timeout_sec = "60"
 log_config_enable               = true
 log_config_filter               = "ERRORS_ONLY"
