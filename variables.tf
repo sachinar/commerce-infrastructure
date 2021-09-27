@@ -456,3 +456,10 @@ variable "inventory_redis_configs" {
 variable "topic_name" {
   description = "topic name for pub/sub"
 }
+
+########## Service Account Roles ###############
+variable "inventory_service_account_roles" {
+  description = "Roles for inventory services"
+  type        = list(string)
+  default     = ["roles/pubsub.editor"]
+}
