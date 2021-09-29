@@ -233,6 +233,12 @@ variable "inventory_secret_name" {
   type        = string
 }
 
+variable "payment_database" {
+  description = "The database to use"
+  type        = string
+  default     = "payment"
+}
+
 variable "inventory_database" {
   description = "The database to use"
   type        = string

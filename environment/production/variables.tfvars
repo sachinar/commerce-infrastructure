@@ -66,10 +66,11 @@ redis_tier                        = "BASIC"
 redis_version                     = "REDIS_5_0"
 inventory_redis_memory_size_db    = 2
 inventory_redis_reserved_ip_range = "10.100.0.0/24"
-########## Order orchestrator DB ##############
+########## DB  namespace ##############
 ord_orchestation_database = "order-orchestration"
 ord_secret_name           = "oo-db-secrets"
 ord_namespace             = "order-orchestration"
+payment_namespace         = "payment"
 ########## GKE VARIABLES ###########
 gke_version            = "1.20"
 gke_preemptible        = true
