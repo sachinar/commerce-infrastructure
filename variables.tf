@@ -463,3 +463,15 @@ variable "inventory_service_account_roles" {
   type        = list(string)
   default     = ["roles/pubsub.editor"]
 }
+
+variable "handler_service_account_roles" {
+  description = "Roles for handler services"
+  type        = list(string)
+  default     = ["roles/datastore.user"]
+}
+
+variable "handler_namespace" {
+  description = "Namespace for handler"
+  type        = string
+  default     = "handler"
+}
