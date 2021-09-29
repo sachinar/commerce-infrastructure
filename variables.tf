@@ -239,6 +239,17 @@ variable "payment_database" {
   default     = "payment"
 }
 
+variable "payment_secret_name" {
+  description = "The secrets name"
+  type        = string
+  default     = "payment-db-secrets"
+}
+
+variable "payment_namespace" {
+  description = "The namespace to use"
+  type        = string
+}
+
 variable "inventory_database" {
   description = "The database to use"
   type        = string

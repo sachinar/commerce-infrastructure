@@ -187,7 +187,7 @@ resource "kubernetes_secret" "payment_app_secret" {
 
   data = {
     DB_HOST     = google_dns_record_set.inventory_postgres_a_record.name
-    DB_NAME     = var.payment_orchestation_database
+    DB_NAME     = var.payment_database
     DB_PORT     = "5432"
     DB_USER     = "payment-user"
     DB_PASSWORD = random_string.payment_user_password.result
