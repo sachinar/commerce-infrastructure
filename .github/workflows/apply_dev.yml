@@ -37,4 +37,6 @@ jobs:
         var_file: environment/dev/variables.tfvars
         label: dev
         backend_config_file: environment/dev/gcs-bucket.tfvars
+        # variables: | 
+        #   prometheus_htpasswd: ${{ secrets.PROMETHEUS_HTPASSWD }}
         auto_approve: true

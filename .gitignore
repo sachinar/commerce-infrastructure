@@ -3,3 +3,4 @@
 .terraform.lock.hcl
 .talismanrc
 .pre-commit-config.yaml
+htpasswd
