@@ -65,14 +65,14 @@ jobs:
         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
         TERRAFORM_HTTP_CREDENTIALS: |
           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
-        TF_VAR_prometheus_htpasswd: '${{ secrets.PROMETHEUS_HTPASSWD }}'
+        TF_VAR_prometheus_htpasswd: "${{ secrets.PROMETHEUS_HTPASSWD }}"
       with:
         path: ./
         var_file: environment/dev/variables.tfvars
         label: dev
         backend_config_file: environment/dev/gcs-bucket.tfvars
         variables: | 
-          prometheus_htpasswd: '${{ secrets.PROMETHEUS_HTPASSWD }}'
+          prometheus_htpasswd: "${{ secrets.PROMETHEUS_HTPASSWD }}"
 
 ####################################
 # Staging 
