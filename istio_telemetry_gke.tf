@@ -22,7 +22,9 @@
 
 module "istio_telemetry_proxy" {
   count    = var.environment == "dev" ? 1:0
-
+  providers = {
+    kubernetes = kubernetes.gke
+  }  
   source       = "git::https://github.com/ebomart/terraform-modules.git//addons/istio-telemetry-proxy"
   release_name = "istio-telemetry-proxy"
   namespace    = "monitoring"
