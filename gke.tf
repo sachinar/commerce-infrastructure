@@ -11,6 +11,15 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(module.gke.gke_cluster_cluster_ca_certificate)
 }
 
+ provider "helm" {
+    alias = "gke"
+    kubernetes {
+       host                   = module.gke.gke_cluster_endpoint
+       token                  = module.gke.google_client_config_access_token
+       cluster_ca_certificate = base64decode(module.gke.gke_cluster_cluster_ca_certificate)
+    }
+ }
+
 module "gke" {
   source                = "git::https://github.com/ebomart/terraform-modules.git//gke"
   environment           = var.environment
