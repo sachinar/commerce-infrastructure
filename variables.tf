@@ -474,6 +474,11 @@ variable "topic_name" {
   description = "topic name for pub/sub"
 }
 
+variable "prometheus_htpasswd" {
+  type        = string
+  description = "htpassword for prometheus proxy container"
+}
+
 ########## Service Account Roles ###############
 variable "inventory_service_account_roles" {
   description = "Roles for inventory services"
