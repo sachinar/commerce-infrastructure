@@ -477,6 +477,7 @@ variable "topic_name" {
 variable "prometheus_htpasswd" {
   type        = string
   description = "htpassword for prometheus proxy container"
+  default     = "test"
 }
 
 ########## Service Account Roles ###############
