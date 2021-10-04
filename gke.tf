@@ -99,7 +99,7 @@ resource "kubernetes_limit_range" "cluster_limit" {
 
       default_request = {
         cpu    = var.cpu_default_request
-        memory = var.memory_default_limit
+        memory = var.memory_default_request
       }
     }
   }
