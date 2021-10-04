@@ -260,6 +260,18 @@ variable "ord_orchestation_database" {
   type        = string
 }
 
+variable "tax_database" {
+  description = "The database to use"
+  type        = string
+  default     = "tax"
+}
+
+variable "tax_namespace" {
+  description = "The namespace to use"
+  type        = string
+  default     = "tax"
+}
+
 variable "ord_namespace" {
   description = "The namespace to use"
   type        = string
@@ -268,6 +280,12 @@ variable "ord_namespace" {
 variable "ord_secret_name" {
   description = "The the secret name to use"
   type        = string
+}
+
+variable "tax_secret_name" {
+  description = "The the secret name to use"
+  type        = string
+  default     = "tax-db-secrets"
 }
 
 variable "inventory_read_replicas" {
