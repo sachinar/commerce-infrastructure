@@ -74,16 +74,16 @@ payment_namespace         = "payment"
 
 additional_databases = [
     {
-    dbname      = "testdb"
-    dbuser      = "tesruser"
-    sname       = "testsecret"
-    namespace   = "testnamespace"      
+    dbname      = "order-orchestration-qa-db"
+    dbuser      = "orch-qa-user"
+    sname       = "oo-db-secrets-qa"
+    namespace   = "order-orchestration-qa"      
     },
    {
-    dbname      = "stestdb"
-    dbuser      = "stestuser"
-    sname       = "stestsecret"
-    namespace   = "stestnamespace"
+    dbname      = "logistics-qa-db"
+    dbuser      = "logsitics-qa-user"
+    sname       = "ls-db-secrets-qa"
+    namespace   = "logistics-service-qa"
     }
   ]
 
