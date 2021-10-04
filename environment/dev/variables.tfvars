@@ -69,6 +69,25 @@ ord_orchestation_database = "order-orchestration"
 ord_secret_name           = "oo-db-secrets"
 ord_namespace             = "order-orchestration"
 payment_namespace         = "payment"
+
+########### QA database #######################
+
+additional_databases = [
+    {
+    dbname      = "testdb"
+    dbuser      = "tesruser"
+    sname       = "testsecret"
+    namespace   = "testnamespace"      
+    },
+   {
+    dbname      = "stestdb"
+    dbuser      = "stestuser"
+    sname       = "stestsecret"
+    namespace   = "stestnamespace"
+    }
+  ]
+
+
 ########## GKE VARIABLES ###########
 gke_version            = "1.20"
 gke_preemptible        = true
