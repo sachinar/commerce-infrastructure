@@ -200,6 +200,12 @@ variable "memory_default_limit" {
   description = "default memory limit"
 }
 
+variable "memory_default_request" {
+  type        = string
+  description = "default memory request"
+  default     = "800Mi"
+}
+
 variable "cpu_default_request" {
   type        = string
   description = "default cpu request"
