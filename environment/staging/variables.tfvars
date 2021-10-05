@@ -118,4 +118,4 @@ jumpbox_docker_image_policy = "Always"
 
 ############### PUB/SUB VARIABLES ######################
 
-topic_name                  = "topic_sample_name"
+topic_name                  = []
