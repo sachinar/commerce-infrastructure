@@ -118,4 +118,4 @@ jumpbox_docker_image_policy = "Always"
 
 ############### PUB/SUB VARIABLES ######################
 
-topic_name                  = []
+topic_name                  = ["inventory-threshold-create"]
