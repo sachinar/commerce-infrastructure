@@ -4,7 +4,8 @@ locals {
   
   }
 
-resource "random_string" "random_password_create" { 
+resource "random_string" "random_password_create" {
+  count            = var.environment == "dev" ? 1:0
   length           = 16
   special          = true
   override_special = "@#%&*()-_=+[]{}<>:?"  
