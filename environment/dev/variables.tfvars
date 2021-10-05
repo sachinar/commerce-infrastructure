@@ -69,6 +69,25 @@ ord_orchestation_database = "order-orchestration"
 ord_secret_name           = "oo-db-secrets"
 ord_namespace             = "order-orchestration"
 payment_namespace         = "payment"
+
+########### QA database #######################
+
+additional_databases = [
+    {
+    dbname      = "order-orchestration-qa-db"
+    dbuser      = "orch-qa-user"
+    sname       = "oo-db-secrets-qa"
+    namespace   = "order-orchestration-qa"      
+    },
+   {
+    dbname      = "logistics-qa-db"
+    dbuser      = "logsitics-qa-user"
+    sname       = "ls-db-secrets-qa"
+    namespace   = "logistics-service-qa"
+    }
+  ]
+
+
 ########## GKE VARIABLES ###########
 gke_version            = "1.20"
 gke_preemptible        = true
@@ -121,5 +140,5 @@ jumpbox_docker_image_policy = "Always"
 
 ############### PUB/SUB VARIABLES ######################
 
-topic_name                  = "inventory-threshold-create"
+topic_name                  =  "inventory-threshold-create"
 

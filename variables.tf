@@ -422,6 +422,20 @@ variable "deployment_service_account_roles" {
   type        = set(string)
 }
 
+########## QA DATABASE CREATION ############
+
+variable "additional_databases" {
+  description = "A list of databases to be created in your cluster"
+  type = list(object({
+    dbname      = string
+    dbuser      = string
+    sname       = string
+    namespace   = string
+  }))
+  default = []
+}
+
+
 ########## JUMPBOX VARIABLES ###############
 
 variable "jumpbox_deployment_name" {
@@ -483,6 +497,7 @@ variable "redis_tier" {
   default     = "BASIC"
 }
 
+
 variable "redis_version" {
   description = "The version of Redis software"
   default     = "REDIS_4_0"
@@ -495,6 +510,7 @@ variable "inventory_redis_configs" {
 }
 
 variable "topic_name" {
+  type        =  string
   description = "topic name for pub/sub"
 }
 
