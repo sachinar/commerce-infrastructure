@@ -497,6 +497,7 @@ variable "redis_tier" {
   default     = "BASIC"
 }
 
+
 variable "redis_version" {
   description = "The version of Redis software"
   default     = "REDIS_4_0"
