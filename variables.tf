@@ -510,9 +510,8 @@ variable "inventory_redis_configs" {
 }
 
 variable "topic_name" {
-  type        =  list(string)
+  type        =  string
   description = "topic name for pub/sub"
-  default     = []
 }
 
 # variable "prometheus_htpasswd" {

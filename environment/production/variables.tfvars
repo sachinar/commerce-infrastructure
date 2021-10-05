@@ -121,4 +121,4 @@ jumpbox_docker_image_policy = "Always"
 jumpbox_pull_secret_key     = "gcr-json-key-jumpbox"
 ############### PUB/SUB VARIABLES ######################
 
-topic_name                  = []
+topic_name                  = "inventory-threshold-create"
