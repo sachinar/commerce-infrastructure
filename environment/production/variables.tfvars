@@ -52,18 +52,18 @@ db_master_zone       = "asia-south1-a"
 db_availability_type = "REGIONAL"
 #db_maintenance_window_day        = 7
 #db_maintenance_window_hour       = 22
-db_tier                           = "db-custom-1-3840"
-db_disk_size                      = "20"
-inventory_database                = "inventory"
-database_instance_name            = "ibo-prd-db"
-inventory_namespace               = "inventory"
-inventory_secret_name             = "inventory-db-secrets"
-postfix_length                    = 5
-db_backup_enabled                 = "false"
-db_backup_start_time              = "22:00"
-disk_autoresize                   = false
-redis_tier                        = "STANDARD"
-redis_version                     = "REDIS_6_x"
+db_tier                     = "db-custom-1-3840"
+db_disk_size                = "20"
+inventory_database          = "inventory"
+database_instance_name      = "ibo-prd-db"
+inventory_namespace         = "inventory"
+inventory_secret_name       = "inventory-db-secrets"
+postfix_length              = 5
+db_backup_enabled           = "false"
+db_backup_start_time        = "22:00"
+disk_autoresize             = false
+redis_tier                  = "STANDARD"
+redis_version               = "REDIS_6_x"
 ibo_redis_memory_size_db    = 2
 ibo_redis_reserved_ip_range = "10.100.0.0/24"
 ########## DB  namespace ##############
@@ -106,9 +106,9 @@ gke_auto_max_count      = 5
 gke_initial_node_count  = 1
 gke_node_pool_disk_size = 100
 gke_max_pods_per_node   = 64
-gke_namespaces          = ["inventory", "ebo","handler","order-orchestration","payment","tax","invoice",
-                           "node-master", "order-service","logistics-service"]
-istio_namespaces        = ["istio-operator", "istio-system"]
+gke_namespaces = ["inventory", "ebo", "handler", "order-orchestration", "payment", "tax", "invoice",
+"node-master", "order-service", "logistics-service"]
+istio_namespaces = ["istio-operator", "istio-system"]
 ############# JUMPBOX VARIABLES #######################
 jumpbox_deployment_name = "jumpbox"
 jumpbox_namespace       = "default"
@@ -122,4 +122,4 @@ jumpbox_docker_image_policy = "Always"
 jumpbox_pull_secret_key     = "gcr-json-key-jumpbox"
 ############### PUB/SUB VARIABLES ######################
 
-topic_name                  = "inventory-threshold-create"
+topic_name = "inventory-threshold-create"

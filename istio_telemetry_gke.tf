@@ -22,15 +22,15 @@
 
 module "istio_telemetry_proxy" {
 
-  count        = var.environment == "dev" ? 1:0
+  count = var.environment == "dev" ? 1 : 0
   providers = {
     helm = helm.gke
   }
 
-  source       = "git::https://github.com/ebomart/terraform-modules.git//addons/istio-telemetry-proxy"
-  release_name = "istio-telemetry-proxy"
-  namespace    = "monitoring"
-  values = [file("environment/${var.environment}/istio-telemetry-values.yaml")]
+  source                 = "git::https://github.com/ebomart/terraform-modules.git//addons/istio-telemetry-proxy"
+  release_name           = "istio-telemetry-proxy"
+  namespace              = "monitoring"
+  values                 = [file("environment/${var.environment}/istio-telemetry-values.yaml")]
   istio_flag             = "false"
   prometheus_secret_name = "prometheus-proxy-auth"
 }

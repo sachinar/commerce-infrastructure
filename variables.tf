@@ -505,10 +505,10 @@ variable "deployment_service_account_roles" {
 variable "additional_databases" {
   description = "A list of databases to be created in your cluster"
   type = list(object({
-    dbname      = string
-    dbuser      = string
-    sname       = string
-    namespace   = string
+    dbname    = string
+    dbuser    = string
+    sname     = string
+    namespace = string
   }))
   default = []
 }
@@ -588,7 +588,7 @@ variable "ibo_redis_configs" {
 }
 
 variable "topic_name" {
-  type        =  string
+  type        = string
   description = "topic name for pub/sub"
 }
 

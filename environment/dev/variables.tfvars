@@ -50,18 +50,18 @@ db_master_zone       = "asia-south1-a"
 db_availability_type = "ZONAL"
 #db_maintenance_window_day   = 7
 #db_maintenance_window_hour  = 22
-db_tier                           = "db-custom-1-3840"
-db_disk_size                      = "20"
-inventory_database                = "inventory"
-database_instance_name            = "ibo-dev-db"
-inventory_namespace               = "inventory"
-inventory_secret_name             = "inventory-db-secrets"
-postfix_length                    = 5
-db_backup_enabled                 = "false"
-db_backup_start_time              = "22:00"
-disk_autoresize                   = false
-redis_tier                        = "BASIC"
-redis_version                     = "REDIS_6_x"
+db_tier                     = "db-custom-1-3840"
+db_disk_size                = "20"
+inventory_database          = "inventory"
+database_instance_name      = "ibo-dev-db"
+inventory_namespace         = "inventory"
+inventory_secret_name       = "inventory-db-secrets"
+postfix_length              = 5
+db_backup_enabled           = "false"
+db_backup_start_time        = "22:00"
+disk_autoresize             = false
+redis_tier                  = "BASIC"
+redis_version               = "REDIS_6_x"
 ibo_redis_memory_size_db    = 1
 ibo_redis_reserved_ip_range = "10.100.0.0/24"
 ########## Order orchestrator DB ##############
@@ -73,31 +73,31 @@ payment_namespace         = "payment"
 ########### QA database #######################
 
 additional_databases = [
-    {
-    dbname      = "order-orchestration-qa-db"
-    dbuser      = "orch-qa-user"
-    sname       = "oo-db-secrets-qa"
-    namespace   = "order-orchestration-qa"      
-    },
-   {
-    dbname      = "logistics-qa-db"
-    dbuser      = "logsitics-qa-user"
-    sname       = "ls-db-secrets-qa"
-    namespace   = "logistics-service-qa"
-    },
-   {
-    dbname      = "node-master-qa"
-    dbuser      = "nodemaster-qa-user"
-    sname       = "nm-db-secrets-qa"
-    namespace   = "node-master-qa"
-    },
-   {
-    dbname      = "order-service-qa"
-    dbuser      = "order-service-qa-user"
-    sname       = "os-db-secrets-qa"
-    namespace   = "order-service-qa"
-    }
-  ]
+  {
+    dbname    = "order-orchestration-qa-db"
+    dbuser    = "orch-qa-user"
+    sname     = "oo-db-secrets-qa"
+    namespace = "order-orchestration-qa"
+  },
+  {
+    dbname    = "logistics-qa-db"
+    dbuser    = "logsitics-qa-user"
+    sname     = "ls-db-secrets-qa"
+    namespace = "logistics-service-qa"
+  },
+  {
+    dbname    = "node-master-qa"
+    dbuser    = "nodemaster-qa-user"
+    sname     = "nm-db-secrets-qa"
+    namespace = "node-master-qa"
+  },
+  {
+    dbname    = "order-service-qa"
+    dbuser    = "order-service-qa-user"
+    sname     = "os-db-secrets-qa"
+    namespace = "order-service-qa"
+  }
+]
 
 
 ########## GKE VARIABLES ###########
@@ -135,10 +135,10 @@ gke_auto_max_count      = 5
 gke_initial_node_count  = 1
 gke_node_pool_disk_size = 100
 gke_max_pods_per_node   = 64
-gke_namespaces          = ["inventory", "ebo", "node-master", "order-service", "promise-service", "logistics-service", "node-master-qa", "order-service-qa", "promise-service-qa", 
-                           "logistics-service-qa", "order-orchestration", "order-orchestration-qa","handler",
-                           "payment","tax","invoice"]
-istio_namespaces        = ["istio-operator", "istio-system"]
+gke_namespaces = ["inventory", "ebo", "node-master", "order-service", "promise-service", "logistics-service", "node-master-qa", "order-service-qa", "promise-service-qa",
+  "logistics-service-qa", "order-orchestration", "order-orchestration-qa", "handler",
+"payment", "tax", "invoice"]
+istio_namespaces = ["istio-operator", "istio-system"]
 ############# JUMPBOX VARIABLES #######################
 jumpbox_deployment_name = "jumpbox"
 jumpbox_namespace       = "default"
@@ -152,5 +152,4 @@ jumpbox_docker_image_policy = "Always"
 
 ############### PUB/SUB VARIABLES ######################
 
-topic_name                  =  "inventory-threshold-create"
-
+topic_name = "inventory-threshold-create"

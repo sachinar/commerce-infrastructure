@@ -4,9 +4,9 @@ resource "google_service_account" "invoice_bucket_access_sa" {
 }
 
 resource "google_storage_bucket_iam_member" "invoice_service_account_iam" {
-  role   = "roles/storage.admin"
-  bucket = "invoice-file-upload-${var.environment}"
-  member = "serviceAccount:${google_service_account.invoice_bucket_access_sa.email}"
+  role       = "roles/storage.admin"
+  bucket     = "invoice-file-upload-${var.environment}"
+  member     = "serviceAccount:${google_service_account.invoice_bucket_access_sa.email}"
   depends_on = [google_storage_bucket.invoice_file_bucket]
 }
 
