@@ -562,11 +562,11 @@ variable "pull_gcr_auth" {
 }
 
 #### Redis variable ######
-variable "inventory_redis_memory_size_db" {
+variable "ibo_redis_memory_size_db" {
   description = "Redis memory size in GiB"
 }
 
-variable "inventory_redis_reserved_ip_range" {
+variable "ibo_redis_reserved_ip_range" {
   description = "The CIDR range of internal addresses that are reserved for this instance"
 }
 
@@ -581,7 +581,7 @@ variable "redis_version" {
   default     = "REDIS_4_0"
 }
 
-variable "inventory_redis_configs" {
+variable "ibo_redis_configs" {
   type        = map(string)
   description = "custom configs for redis"
   default     = {}

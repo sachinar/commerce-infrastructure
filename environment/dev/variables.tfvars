@@ -61,9 +61,9 @@ db_backup_enabled                 = "false"
 db_backup_start_time              = "22:00"
 disk_autoresize                   = false
 redis_tier                        = "BASIC"
-redis_version                     = "REDIS_5_0"
-inventory_redis_memory_size_db    = 1
-inventory_redis_reserved_ip_range = "10.100.0.0/24"
+redis_version                     = "REDIS_6_x"
+ibo_redis_memory_size_db    = 1
+ibo_redis_reserved_ip_range = "10.100.0.0/24"
 ########## Order orchestrator DB ##############
 ord_orchestation_database = "order-orchestration"
 ord_secret_name           = "oo-db-secrets"
