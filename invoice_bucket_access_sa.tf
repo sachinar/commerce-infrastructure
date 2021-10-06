@@ -10,6 +10,13 @@ resource "google_storage_bucket_iam_member" "invoice_service_account_iam" {
   depends_on = [google_storage_bucket.invoice_file_bucket]
 }
 
+resource "google_project_iam_member" "invoice_service_account_iam" {
+  project = var.project_id
+  count   = length(var.invoice_service_account_roles)
+  role    = element(var.invoice_service_account_roles, count.index)
+  member  = "serviceAccount:${google_service_account.invoice_bucket_access_sa.email}"
+}
+
 # Add annotation to the Kubernetes service account, using the email address of the Google service account
 resource "kubernetes_service_account" "invoice_service_account" {
   depends_on = [module.gke]
