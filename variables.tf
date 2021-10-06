@@ -272,10 +272,22 @@ variable "tax_database" {
   default     = "tax"
 }
 
+variable "invoice_database" {
+  description = "The database to use"
+  type        = string
+  default     = "invoice"
+}
+
 variable "tax_namespace" {
   description = "The namespace to use"
   type        = string
   default     = "tax"
+}
+
+variable "invoice_namespace" {
+  description = "The namespace to use"
+  type        = string
+  default     = "invoice"
 }
 
 variable "ord_namespace" {
@@ -292,6 +304,12 @@ variable "tax_secret_name" {
   description = "The the secret name to use"
   type        = string
   default     = "tax-db-secrets"
+}
+
+variable "invoice_secret_name" {
+  description = "The the secret name to use"
+  type        = string
+  default     = "invoice-db-secrets"
 }
 
 variable "inventory_read_replicas" {
