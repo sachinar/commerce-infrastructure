@@ -278,6 +278,26 @@ variable "invoice_database" {
   default     = "invoice"
 }
 
+variable "nodemaster_database" {
+  description = "The database to use"
+  type        = string
+  default     = "nodemaster"
+}
+
+variable "orderservice_database" {
+  description = "The database to use"
+  type        = string
+  default     = "orderservice"
+}
+
+variable "logistics_database" {
+  description = "The database to use"
+  type        = string
+  default     = "logistics"
+}
+
+## NAMESPACE_VARIABLE ##
+
 variable "tax_namespace" {
   description = "The namespace to use"
   type        = string
@@ -295,6 +315,26 @@ variable "ord_namespace" {
   type        = string
 }
 
+variable "nodemaster_namespace" {
+  description = "The namespace to use"
+  type        = string
+  default     = "node-master"
+}
+
+variable "orderservice_namespace" {
+  description = "The namespace to use"
+  type        = string
+  default     = "order-service"
+}
+
+variable "logistics_namespace" {
+  description = "The namespace to use"
+  type        = string
+  default     = "logistics-service"
+}
+
+## SECRET_VARIABLE ##
+
 variable "ord_secret_name" {
   description = "The the secret name to use"
   type        = string
@@ -311,6 +351,26 @@ variable "invoice_secret_name" {
   type        = string
   default     = "invoice-db-secrets"
 }
+
+variable "nodemaster_secret_name" {
+  description = "The the secret name to use"
+  type        = string
+  default     = "nodemaster-db-secrets"
+}
+
+variable "orderservice_secret_name" {
+  description = "The the secret name to use"
+  type        = string
+  default     = "orderservice-db-secrets"
+}
+
+variable "logistics_secret_name" {
+  description = "The the secret name to use"
+  type        = string
+  default     = "logistics-db-secrets"
+}
+
+##
 
 variable "inventory_read_replicas" {
   type        = list(map(any))

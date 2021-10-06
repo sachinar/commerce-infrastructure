@@ -44,6 +44,26 @@ resource "random_string" "invoice_user_password" {
   override_special = "@#%&*()-_=+[]{}<>:?"
 }
 
+
+resource "random_string" "nodemaster_user_password" {
+  length           = 16
+  special          = true
+  override_special = "@#%&*()-_=+[]{}<>:?"
+}
+
+resource "random_string" "orderservice_user_password" {
+  length           = 16
+  special          = true
+  override_special = "@#%&*()-_=+[]{}<>:?"
+}
+
+resource "random_string" "logistics_user_password" {
+  length           = 16
+  special          = true
+  override_special = "@#%&*()-_=+[]{}<>:?"
+}
+
+
 resource "random_string" "dev_team_db_password" {
   length           = 16
   special          = true
@@ -129,6 +149,21 @@ module "inventory_google_postgres" {
       charset   = "UTF8"
       collation = "en_US.UTF8"
     },
+    {
+      name      = var.nodemaster_database
+      charset   = "UTF8"
+      collation = "en_US.UTF8"
+    },
+    {
+      name      = var.orderservice_database
+      charset   = "UTF8"
+      collation = "en_US.UTF8"
+    },
+    {
+      name      = var.logistics_database
+      charset   = "UTF8"
+      collation = "en_US.UTF8"
+    },
   ]
 
   user_name     = "inventory-${random_string.inventory_app_user_name.result}"
@@ -154,6 +189,18 @@ module "inventory_google_postgres" {
     {
       name     = "invoice-user"
       password = random_string.invoice_user_password.result
+    },
+    {
+      name     = "nodemaster-user"
+      password = random_string.nodemaster_user_password.result
+    },
+    {
+      name     = "orderservice-user"
+      password = random_string.orderservice_user_password.result
+    },
+    {
+      name     = "logistics-user"
+      password = random_string.logistics_user_password.result
     },
   ]
 
@@ -259,6 +306,64 @@ resource "kubernetes_secret" "invoice_app_secret" {
     DB_PORT     = "5432"
     DB_USER     = "invoice-user"
     DB_PASSWORD = random_string.invoice_user_password.result
+  }
+
+  depends_on = [module.gke]
+}
+
+# nodemaster 
+resource "kubernetes_secret" "nodemaster_app_secret" {
+  provider = kubernetes.gke
+  metadata {
+    name      = var.nodemaster_secret_name
+    namespace = var.nodemaster_namespace
+  }
+
+  data = {
+    DB_HOST     = google_dns_record_set.inventory_postgres_a_record.name
+    DB_NAME     = var.nodemaster_database
+    DB_PORT     = "5432"
+    DB_USER     = "nodemaster-user"
+    DB_PASSWORD = random_string.nodemaster_user_password.result
+  }
+
+  depends_on = [module.gke]
+}
+
+# order-service
+resource "kubernetes_secret" "orderservice_app_secret" {
+  provider = kubernetes.gke
+  metadata {
+    name      = var.orderservice_secret_name
+    namespace = var.orderservice_namespace
+  }
+
+  data = {
+    DB_HOST     = google_dns_record_set.inventory_postgres_a_record.name
+    DB_NAME     = var.orderservice_database
+    DB_PORT     = "5432"
+    DB_USER     = "orderservice-user"
+    DB_PASSWORD = random_string.orderservice_user_password.result
+  }
+
+  depends_on = [module.gke]
+}
+
+
+# logistics
+resource "kubernetes_secret" "logistics_app_secret" {
+  provider = kubernetes.gke
+  metadata {
+    name      = var.logistics_secret_name
+    namespace = var.logistics_namespace
+  }
+
+  data = {
+    DB_HOST     = google_dns_record_set.inventory_postgres_a_record.name
+    DB_NAME     = var.logistics_database
+    DB_PORT     = "5432"
+    DB_USER     = "logistics-user"
+    DB_PASSWORD = random_string.logistics_user_password.result
   }
 
   depends_on = [module.gke]

@@ -84,6 +84,18 @@ additional_databases = [
     dbuser      = "logsitics-qa-user"
     sname       = "ls-db-secrets-qa"
     namespace   = "logistics-service-qa"
+    },
+   {
+    dbname      = "node-master-qa"
+    dbuser      = "nodemaster-qa-user"
+    sname       = "nm-db-secrets-qa"
+    namespace   = "node-master-qa"
+    },
+   {
+    dbname      = "order-service-qa"
+    dbuser      = "order-service-qa-user"
+    sname       = "os-db-secrets-qa"
+    namespace   = "order-service-qa"
     }
   ]
 
