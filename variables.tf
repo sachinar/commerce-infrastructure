@@ -570,6 +570,10 @@ variable "ibo_redis_reserved_ip_range" {
   description = "The CIDR range of internal addresses that are reserved for this instance"
 }
 
+variable "ibo_redis_qa_reserved_ip_range" {
+  description = "The CIDR range of internal addresses that are reserved for this instance"
+}
+
 variable "redis_tier" {
   description = "The service tier of the instance"
   default     = "BASIC"
