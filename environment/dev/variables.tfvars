@@ -103,7 +103,7 @@ database_flags  = [
   },
   {
     name  = "autovacuum"
-    value = on
+    value = "on"
   }
 ]
 ########## Order orchestrator DB ##############

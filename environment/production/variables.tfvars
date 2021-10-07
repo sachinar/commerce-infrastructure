@@ -105,7 +105,7 @@ database_flags  = [
   },
   {
     name  = "autovacuum"
-    value = on
+    value = "on"
   }
 ]
 ########## DB  namespace ##############
