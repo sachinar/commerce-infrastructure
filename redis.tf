@@ -18,5 +18,5 @@ resource "google_dns_record_set" "ibo_redis_a_record" {
   managed_zone = google_dns_managed_zone.private-dns-managed-zone.name
   type         = "A"
   ttl          = 300
-  rrdatas      = [module.ibo_redis.ip]
+  rrdatas      = [module.ibo_redis[0].ip]
 }
