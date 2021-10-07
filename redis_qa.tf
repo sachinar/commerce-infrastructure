@@ -7,7 +7,7 @@ module "ibo_redis_qa" {
   redis_tier               = var.redis_tier
   redis_version            = var.redis_version
   redis_authorized_network = google_compute_network.network.self_link
-  redis_reserved_ip_range  = var.ibo_redis_reserved_ip_range
+  redis_reserved_ip_range  = var.ibo_redis_qa_reserved_ip_range
   redis_configs            = var.ibo_redis_configs
   auth_enabled             = true
 }
