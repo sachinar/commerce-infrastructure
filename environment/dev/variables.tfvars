@@ -64,6 +64,48 @@ redis_tier                  = "BASIC"
 redis_version               = "REDIS_6_x"
 ibo_redis_memory_size_db    = 1
 ibo_redis_reserved_ip_range = "10.100.0.0/24"
+database_flags  = [
+  {
+    name  = "autovacuum_analyze_scale_factor"
+    value = "0"
+  },
+  {
+    name  = "autovacuum_analyze_threshold"
+    value = "5000"
+  },
+  {
+    name  = "autovacuum_naptime"
+    value = "15"
+  },
+  {
+    name  = "autovacuum_max_workers"
+    value = "6"
+  },
+  {
+    name  = "autovacuum_vacuum_cost_delay"
+    value = "10"
+  },
+  {
+    name  = "autovacuum_vacuum_cost_limit"
+    value = "1000"
+  },
+  {
+    name  = "autovacuum_vacuum_threshold"
+    value = "5000"
+  },
+  {
+    name  = "autovacuum_vacuum_scale_factor"
+    value = "0"
+  },
+  {
+    name  = "log_autovacuum_min_duration"
+    value = "0"
+  },
+  {
+    name  = "autovacuum"
+    value = "on"
+  }
+]
 ########## Order orchestrator DB ##############
 ord_orchestation_database = "order-orchestration"
 ord_secret_name           = "oo-db-secrets"
