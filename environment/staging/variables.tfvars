@@ -63,6 +63,7 @@ disk_autoresize             = false
 redis_version               = "REDIS_6_X"
 ibo_redis_memory_size_db    = 1
 ibo_redis_reserved_ip_range = "10.100.0.0/24"
+ibo_redis_qa_reserved_ip_range = "10.100.2.0/24"
 database_flags  = [
   {
     name  = "autovacuum_analyze_scale_factor"
