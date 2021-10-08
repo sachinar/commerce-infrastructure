@@ -115,32 +115,32 @@ payment_namespace         = "payment"
 
 ########### QA database #######################
 
-additional_databases = [
-  {
-    dbname    = "order-orchestration-qa-db"
-    dbuser    = "orch-qa-user"
-    sname     = "oo-db-secrets-qa"
-    namespace = "order-orchestration-qa"
-  },
-  {
-    dbname    = "logistics-qa-db"
-    dbuser    = "logsitics-qa-user"
-    sname     = "ls-db-secrets-qa"
-    namespace = "logistics-service-qa"
-  },
-  {
-    dbname    = "node-master-qa"
-    dbuser    = "nodemaster-qa-user"
-    sname     = "nm-db-secrets-qa"
-    namespace = "node-master-qa"
-  },
-  {
-    dbname    = "order-service-qa"
-    dbuser    = "order-service-qa-user"
-    sname     = "os-db-secrets-qa"
-    namespace = "order-service-qa"
-  }
-]
+# additional_databases = [
+#   {
+#     dbname    = "order-orchestration-qa-db"
+#     dbuser    = "orch-qa-user"
+#     sname     = "oo-db-secrets-qa"
+#     namespace = "order-orchestration-qa"
+#   },
+#   {
+#     dbname    = "logistics-qa-db"
+#     dbuser    = "logsitics-qa-user"
+#     sname     = "ls-db-secrets-qa"
+#     namespace = "logistics-service-qa"
+#   },
+#   {
+#     dbname    = "node-master-qa"
+#     dbuser    = "nodemaster-qa-user"
+#     sname     = "nm-db-secrets-qa"
+#     namespace = "node-master-qa"
+#   },
+#   {
+#     dbname    = "order-service-qa"
+#     dbuser    = "order-service-qa-user"
+#     sname     = "os-db-secrets-qa"
+#     namespace = "order-service-qa"
+#   }
+# ]
 
 
 ########## GKE VARIABLES ###########
