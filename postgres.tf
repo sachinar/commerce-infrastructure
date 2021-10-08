@@ -125,11 +125,6 @@ module "inventory_google_postgres" {
 
   additional_databases = [
     {
-      name      = "${var.inventory_database}-qa"
-      charset   = "UTF8"
-      collation = "en_US.UTF8"
-    },
-    {
       name      = var.ord_orchestation_database
       charset   = "UTF8"
       collation = "en_US.UTF8"
