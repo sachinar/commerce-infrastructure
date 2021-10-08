@@ -115,13 +115,13 @@ payment_namespace         = "payment"
 
 ########### QA database #######################
 
-# additional_databases = [
-#   {
-#     dbname    = "order-orchestration-qa-db"
-#     dbuser    = "orch-qa-user"
-#     sname     = "oo-db-secrets-qa"
-#     namespace = "order-orchestration-qa"
-#   },
+additional_databases = [
+  {
+    dbname    = "order-orchestration-qa-db"
+    dbuser    = "orch-qa-user"
+    sname     = "oo-db-secrets-qa"
+    namespace = "order-orchestration-qa"
+  },
 #   {
 #     dbname    = "logistics-qa-db"
 #     dbuser    = "logsitics-qa-user"
@@ -140,7 +140,7 @@ payment_namespace         = "payment"
 #     sname     = "os-db-secrets-qa"
 #     namespace = "order-service-qa"
 #   }
-# ]
+]
 
 
 ########## GKE VARIABLES ###########
