@@ -603,7 +603,7 @@ variable "topic_name" {
 #   default     = "test"
 # }
 
-########## Service Account Roles ###############
+########## Service Account Roles & Namespace ###############
 variable "inventory_service_account_roles" {
   description = "Roles for inventory services"
   type        = list(string)
@@ -628,3 +628,16 @@ variable "invoice_service_account_roles" {
   default     = ["roles/pubsub.editor"]
 
 }
+
+variable "core_service_account_roles" {
+  description = "Roles for core services"
+  type        = list(string)
+  default     = ["roles/redis.editor"]
+}
+
+variable "core_namespace" {
+  description = "Namespace for core"
+  type        = string
+  default     = "core-service"
+}
+
