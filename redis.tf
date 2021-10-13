@@ -1,5 +1,5 @@
 module "ibo_redis" {
-  count                    = var.environment == "dev" ? 1 : 0  
+  # count                    = var.environment == "dev" ? 1 : 0  
   source                   = "git::https://github.com/ebomart/terraform-modules.git//redis"
   redis_name               = "ibo-redis"
   redis_memory_size_db     = var.ibo_redis_memory_size_db
@@ -13,10 +13,10 @@ module "ibo_redis" {
 }
 
 resource "google_dns_record_set" "ibo_redis_a_record" {
-  count        = var.environment == "dev" ? 1 : 0    
+  # count        = var.environment == "dev" ? 1 : 0    
   name         = "ibo.redis.${google_dns_managed_zone.private-dns-managed-zone.dns_name}"
   managed_zone = google_dns_managed_zone.private-dns-managed-zone.name
   type         = "A"
   ttl          = 300
-  rrdatas      = [module.ibo_redis[0].ip]
+  rrdatas      = [module.ibo_redis.ip]
 }
