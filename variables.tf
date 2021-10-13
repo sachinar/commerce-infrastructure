@@ -628,3 +628,9 @@ variable "invoice_service_account_roles" {
   default     = ["roles/pubsub.editor"]
 
 }
+
+variable "core_service_account_roles" {
+  description = "Roles for core services"
+  type        = list(string)
+  default     = ["roles/redis.editor"]
+}
