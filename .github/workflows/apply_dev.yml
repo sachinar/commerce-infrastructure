@@ -32,6 +32,8 @@ jobs:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
         TERRAFORM_HTTP_CREDENTIALS: |
           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
+        TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
+        TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
       with:
         path: ./
         var_file: environment/dev/variables.tfvars

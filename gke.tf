@@ -83,7 +83,6 @@ resource "kubernetes_namespace" "gke_namespace" {
 
 resource "kubernetes_limit_range" "cluster_limit" {
   provider = kubernetes.gke
-
   for_each = toset(var.gke_namespaces)
   metadata {
     name      = "default-limit"
@@ -103,4 +102,22 @@ resource "kubernetes_limit_range" "cluster_limit" {
       }
     }
   }
+}
+
+resource "kubernetes_secret" "tls_certificate" {
+  provider = kubernetes.gke
+
+  metadata {
+    name      = "istio-ingressgateway-certs"
+    namespace = "istio-system"
+  }
+
+  data = {
+    "tls.crt" = var.ssl_server_certificate
+    "tls.key" = var.ssl_server_key
+  }
+
+  type = "kubernetes.io/tls"
+
+  depends_on = [module.gke]
 }
