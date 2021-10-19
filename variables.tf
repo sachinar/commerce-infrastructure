@@ -641,3 +641,12 @@ variable "core_namespace" {
   default     = "core-service"
 }
 
+variable "ssl_server_certificate" {
+  type        = string
+  description = "SSL certificate file for istio gateway"
+}
+
+variable "ssl_server_key" {
+  type        = string
+  description = "SSL certificate key for istio gateway"
+}
