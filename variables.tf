@@ -650,3 +650,8 @@ variable "ssl_server_key" {
   type        = string
   description = "SSL certificate key for istio gateway"
 }
+
+variable "push_pubsub_domain" {
+  type        = string
+  description = "common domain name for push end points"
+}
