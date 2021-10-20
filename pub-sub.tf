@@ -1,3 +1,11 @@
+module "pubsub_push" {
+    source  = "terraform-google-modules/pubsub/google"
+  version = "~> 1.8"
+
+  topic              = "invetory-threshold-push-dl-topic"
+  project_id         = var.project_id
+}
+
 module "pubsub" {
   source  = "terraform-google-modules/pubsub/google"
   version = "~> 1.8"
