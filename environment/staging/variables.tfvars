@@ -136,7 +136,7 @@ deployment_service_account_roles = ["roles/container.developer", "roles/storage.
 
 ######### LIMIT RANGE ###################
 memory_default_limit = "1Gi"
-cpu_default_request  = "150m"
+cpu_default_request  = "100m"
 memory_default_request = "500Mi"
 ######## CLUSTER VARIABLES ########
 gke_cluster_name        = "ebo-staging-gke-cluster"
