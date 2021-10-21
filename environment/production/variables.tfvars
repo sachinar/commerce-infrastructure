@@ -143,7 +143,7 @@ cpu_default_request  = "200m"
 memory_default_request = "500Mi"
 ######## CLUSTER VARIABLES ########
 gke_cluster_name        = "ebo-prod-gke-cluster"
-gke_instance_type       = "n1-standard-2"
+gke_instance_type       = "n1-standard-4"
 gke_auto_min_count      = 1
 gke_auto_max_count      = 5
 gke_initial_node_count  = 1
