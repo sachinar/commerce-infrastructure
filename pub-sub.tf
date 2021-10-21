@@ -5,7 +5,9 @@ module "pubsub_push" {
   topic              = "invetory-threshold-push-dl-topic"
   project_id         = var.project_id
   pull_subscriptions = [
-    name             = "invetory-threshold-push-dl-error"
+    {
+      name             = "invetory-threshold-push-dl-error"
+    }
   ]
 }
 
