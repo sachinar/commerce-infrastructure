@@ -115,13 +115,13 @@ payment_namespace         = "payment"
 
 ########### QA database #######################
 
-additional_databases = [
-  {
-    dbname    = "order-orchestration-qa-db"
-    dbuser    = "orch-qa-user"
-    sname     = "oo-db-secrets-qa"
-    namespace = "order-orchestration-qa"
-  },
+# additional_databases = [
+#   {
+#    dbname    = "order-orchestration-qa-db"
+#    dbuser    = "orch-qa-user"
+#    sname     = "oo-db-secrets-qa"
+#    namespace = "order-orchestration-qa"
+#   },
 #   {
 #     dbname    = "logistics-qa-db"
 #     dbuser    = "logsitics-qa-user"
@@ -140,7 +140,7 @@ additional_databases = [
 #     sname     = "os-db-secrets-qa"
 #     namespace = "order-service-qa"
 #   }
-]
+# ]
 
 
 ########## GKE VARIABLES ###########
@@ -178,8 +178,8 @@ gke_auto_max_count      = 5
 gke_initial_node_count  = 1
 gke_node_pool_disk_size = 100
 gke_max_pods_per_node   = 64
-gke_namespaces = ["inventory", "ebo", "node-master", "order-service", "promise-service", "logistics-service", "node-master-qa", "order-service-qa", "promise-service-qa",
-  "logistics-service-qa", "order-orchestration", "order-orchestration-qa", "handler",
+gke_namespaces = ["inventory", "ebo", "node-master", "order-service", "promise-service", "logistics-service",
+"order-orchestration", "handler",
 "payment", "tax", "invoice", "core-service"]
 istio_namespaces = ["istio-operator", "istio-system"]
 ############# JUMPBOX VARIABLES #######################
