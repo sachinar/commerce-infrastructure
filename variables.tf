@@ -570,11 +570,6 @@ variable "ibo_redis_reserved_ip_range" {
   description = "The CIDR range of internal addresses that are reserved for this instance"
 }
 
-# variable "ibo_redis_qa_reserved_ip_range" {
-#   description = "The CIDR range of internal addresses that are reserved for this instance"
-#   default     = "10.100.2.0/24"
-# }
-
 variable "redis_tier" {
   description = "The service tier of the instance"
   default     = "BASIC"
@@ -629,6 +624,13 @@ variable "invoice_service_account_roles" {
 
 }
 
+variable "customer_service_account_roles" {
+  description = "Roles for invoice services"
+  type        = list(string)
+  default     = ["roles/pubsub.editor"]
+
+}
+
 variable "core_service_account_roles" {
   description = "Roles for core services"
   type        = list(string)
@@ -639,6 +641,12 @@ variable "core_namespace" {
   description = "Namespace for core"
   type        = string
   default     = "core-service"
+}
+
+variable "ebo_namespace" {
+  description = "Namespace for ebo"
+  type        = string
+  default     = "ebo"
 }
 
 variable "ssl_server_certificate" {
