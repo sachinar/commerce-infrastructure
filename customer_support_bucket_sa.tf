@@ -1,6 +1,6 @@
 resource "google_storage_bucket" "customer_file_bucket" {
   #ts:skip=accurics.gcp.IAM.122 Already applied
-  name     = "customer-support-files"
+  name     = "customer-support-files-${var.environment}"
   location = "ASIA"
 
   uniform_bucket_level_access = true
@@ -13,7 +13,7 @@ resource "google_service_account" "customer_bucket_access_sa" {
 
 resource "google_storage_bucket_iam_member" "customer_service_account_iam" {
   role       = "roles/storage.admin"
-  bucket     = "customer-support-files"
+  bucket     = "customer-support-files-${var.environment}"
   member     = "serviceAccount:${google_service_account.customer_bucket_access_sa.email}"
   depends_on = [google_storage_bucket.customer_file_bucket]
 }
