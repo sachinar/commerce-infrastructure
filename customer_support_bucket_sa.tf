@@ -1,6 +1,6 @@
 resource "google_storage_bucket" "customer_file_bucket" {
   #ts:skip=accurics.gcp.IAM.122 Already applied
-  name     = "customer-support-files"
+  name     = "customer-support-files-${var.environment}"
   location = "ASIA"
 
   uniform_bucket_level_access = true
