@@ -502,16 +502,16 @@ variable "deployment_service_account_roles" {
 
 ########## QA DATABASE CREATION ############
 
-variable "additional_databases" {
-  description = "A list of databases to be created in your cluster"
-  type = list(object({
-    dbname    = string
-    dbuser    = string
-    sname     = string
-    namespace = string
-  }))
-  default = []
-}
+#variable "additional_databases" {
+#  description = "A list of databases to be created in your cluster"
+#  type = list(object({
+#    dbname    = string
+#    dbuser    = string
+#    sname     = string
+#    namespace = string
+#  }))
+#  default = []
+#}
 
 
 ########## JUMPBOX VARIABLES ###############
