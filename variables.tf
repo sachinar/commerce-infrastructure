@@ -617,6 +617,18 @@ variable "handler_namespace" {
   default     = "handler"
 }
 
+
+
+
+variable "payment_service_account_roles" {
+  description = "Roles for payment services"
+  type        = list(string)
+  default     = ["roles/pubsub.editor","roles/cloudtasks.enqueuer"]
+}
+
+
+
+
 variable "invoice_service_account_roles" {
   description = "Roles for invoice services"
   type        = list(string)
