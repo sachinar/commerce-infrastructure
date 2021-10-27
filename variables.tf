@@ -623,13 +623,7 @@ variable "handler_namespace" {
 variable "payment_service_account_roles" {
   description = "Roles for payment services"
   type        = list(string)
-  default     = ["roles/datastore.user"]
-}
-
-variable "payment_namespace" {
-  description = "Namespace for payment"
-  type        = string
-  default     = "payment"
+  default     = ["roles/pubsub.editor","roles/cloudtasks.enqueuer"]
 }
 
 
