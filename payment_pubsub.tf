@@ -1,4 +1,4 @@
-module "payment_pubsub_push" {
+module "payment_events" {
   source  = "terraform-google-modules/pubsub/google"
   version = "~> 1.8"
 
@@ -11,12 +11,19 @@ module "payment_pubsub_push" {
   ]
 }
 
-module "pubsub" {
+module "payment_ticket_events_push" {
   source  = "terraform-google-modules/pubsub/google"
   version = "~> 1.8"
 
   topic              = "payment-refund-ticket-events"
   project_id         = var.project_id
+
+  pull_subscriptions = [
+    {
+      name             = "payments-internal-payment-events-subscription"
+    }
+  ]
+  
   push_subscriptions = [
     {
       name                       = "payments-internal-payment-refund-ticket-events-subscription"                                                                               
