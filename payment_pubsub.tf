@@ -17,12 +17,6 @@ module "payment_ticket_events_push" {
 
   topic              = "payment-refund-ticket-events"
   project_id         = var.project_id
-
-  pull_subscriptions = [
-    {
-      name             = "payments-internal-payment-events-subscription"
-    }
-  ]
   
   push_subscriptions = [
     {
