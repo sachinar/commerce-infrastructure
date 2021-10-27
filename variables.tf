@@ -617,6 +617,24 @@ variable "handler_namespace" {
   default     = "handler"
 }
 
+
+
+
+variable "payment_service_account_roles" {
+  description = "Roles for payment services"
+  type        = list(string)
+  default     = ["roles/datastore.user"]
+}
+
+variable "payment_namespace" {
+  description = "Namespace for payment"
+  type        = string
+  default     = "payment"
+}
+
+
+
+
 variable "invoice_service_account_roles" {
   description = "Roles for invoice services"
   type        = list(string)
