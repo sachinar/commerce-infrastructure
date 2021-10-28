@@ -119,7 +119,7 @@ gke_version            = "1.20"
 gke_preemptible        = true
 master_ipv4_cidr_block = "10.3.0.0/28"
 
-daily_maintenance_window_start = "03:00"
+daily_maintenance_window_start = "20:00"
 oauth_scopes = [
   "https://www.googleapis.com/auth/trace.append",
   "https://www.googleapis.com/auth/monitoring",
