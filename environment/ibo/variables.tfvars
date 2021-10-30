@@ -126,7 +126,7 @@ oauth_scopes = [
   "https://www.googleapis.com/auth/logging.write",
 ]
 
-environment = "production"
+environment = "prod"
 
 gke_encryption_state = "ENCRYPTED"
 gke_encryption_key   = ""
