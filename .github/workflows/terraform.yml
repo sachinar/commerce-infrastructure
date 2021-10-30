@@ -32,147 +32,104 @@ jobs:
         path: ./
 
   terraform:
-  #     name: 'Pre Setup DEV'
-  #     runs-on: ubuntu-latest
-  #     needs: validate 
-  #     environment: dev
+      name: 'Pre Setup DEV'
+      runs-on: ubuntu-latest
+      needs: validate 
+      environment: dev
 
-  #     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-  #     defaults:
-  #       run:
-  #         shell: bash
+      # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+      defaults:
+        run:
+          shell: bash
 
-  #     steps:
-  #     # Checkout the repository to the GitHub Actions runner
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+      steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #     - name: Set up Cloud SDK
-  #       uses: google-github-actions/setup-gcloud@master
-  #       with:
-  #         project_id: ${{ secrets.GCP_PROJECT_ID }}
-  #         service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-  #         export_default_credentials: true
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          export_default_credentials: true
 
-  #     - name: Bucket creation DEV
-  #       shell: bash
-  #       run: |
-  #         gsutil ls -b gs://${{ secrets.GCP_PROJECT_NAME}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_NAME}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_NAME}} )
+      - name: Bucket creation DEV
+        shell: bash
+        run: |
+          gsutil ls -b gs://${{ secrets.GCP_PROJECT_NAME}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_NAME}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_NAME}} )
 
-  #     - name: plan-dev
-  #       uses: dflook/terraform-plan@v1
-  #       env:
-  #         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
-  #         TERRAFORM_HTTP_CREDENTIALS: |
-  #           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
-  #         TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
-  #         TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
-  #       with:
-  #         path: ./
-  #         var_file: environment/dev/variables.tfvars
-  #         label: dev
-  #         backend_config_file: environment/dev/gcs-bucket.tfvars
+      - name: plan-dev
+        uses: dflook/terraform-plan@v1
+        env:
+          GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+          TERRAFORM_HTTP_CREDENTIALS: |
+            github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
+          TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
+          TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
+        with:
+          path: ./
+          var_file: environment/dev/variables.tfvars
+          label: dev
+          backend_config_file: environment/dev/gcs-bucket.tfvars
 
-  # ####################################
-  # # Staging 
-  # ####################################
+  ####################################
+  # Staging 
+  ####################################
 
-  #   pre-setup-staging:
-  #     name: 'Pre Setup Staging'
-  #     runs-on: ubuntu-latest
-  #     needs: validate
-  #     environment: staging
+    pre-setup-staging:
+      name: 'Pre Setup Staging'
+      runs-on: ubuntu-latest
+      needs: validate
+      environment: staging
 
-  #     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-  #     defaults:
-  #       run:
-  #         shell: bash
+      # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+      defaults:
+        run:
+          shell: bash
 
-  #     steps:
-  #     # Checkout the repository to the GitHub Actions runner
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+      steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #     - name: Set up Cloud SDK
-  #       uses: google-github-actions/setup-gcloud@master
-  #       with:
-  #         project_id: ${{ secrets.GCP_PROJECT_ID }}
-  #         service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-  #         export_default_credentials: true
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          export_default_credentials: true
 
-  #     - name: Bucket staging
-  #       shell: bash
-  #       run: |
-  #         gsutil ls -b gs://${{ secrets.GCP_PROJECT_NAME}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_NAME}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_NAME}} )
+      - name: Bucket staging
+        shell: bash
+        run: |
+          gsutil ls -b gs://${{ secrets.GCP_PROJECT_NAME}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_NAME}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_NAME}} )
 
-  #     - name: plan-staging
-  #       uses: dflook/terraform-plan@v1
-  #       env:
-  #         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
-  #         TERRAFORM_HTTP_CREDENTIALS: |
-  #           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
-  #         TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
-  #         TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
-  #       with:
-  #         path: ./
-  #         var_file: environment/staging/variables.tfvars
-  #         label: staging
-  #         backend_config_file: environment/staging/gcs-bucket.tfvars
+      - name: plan-staging
+        uses: dflook/terraform-plan@v1
+        env:
+          GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+          TERRAFORM_HTTP_CREDENTIALS: |
+            github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
+          TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
+          TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
+        with:
+          path: ./
+          var_file: environment/staging/variables.tfvars
+          label: staging
+          backend_config_file: environment/staging/gcs-bucket.tfvars
 
-  # ####################################
-  # # Sandbox 
-  # ####################################
+  ####################################
+  # Sandbox 
+  ####################################
 
-  # #   pre-setup-sandbox:
-  # #     name: 'Pre Setup Sandbox'
-  # #     runs-on: ubuntu-latest
-  # #     needs: validate
-  # #     environment: sandbox
-
-  # #     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-  # #     defaults:
-  # #       run:
-  # #         shell: bash
-
-  # #     steps:
-  # #     # Checkout the repository to the GitHub Actions runner
-  # #     - name: Checkout
-  # #       uses: actions/checkout@v2
-      
-  # #     - name: Set up Cloud SDK
-  # #       uses: google-github-actions/setup-gcloud@master
-  # #       with:
-  # #         project_id: ${{ secrets.GCP_PROJECT_ID }}
-  # #         service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-  # #         export_default_credentials: true
-
-  # #     - name: Bucket Sandbox
-  # #       shell: bash
-  # #       run: |
-  # #         gsutil ls -b gs://${{ secrets.GCP_PROJECT_NAME}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_NAME}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_NAME}} )
-
-  # #     - name: plan-sandbox
-  # #       uses: dflook/terraform-plan@v1
-  # #       env:
-  # #         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
-  # #         TERRAFORM_HTTP_CREDENTIALS: |
-  # #           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
-  # #       with:
-  # #         path: ./
-  # #         var_file: environment/sandbox/variables.tfvars
-  # #         label: sandbox
-  # #         backend_config_file: environment/sandbox/gcs-bucket.tfvars
-
-  # # ####################################
-  # # # Production 
-  # # ####################################
-
-  #   pre-setup-prod:
-  #     name: 'Pre Setup Production'
+  #   pre-setup-sandbox:
+  #     name: 'Pre Setup Sandbox'
   #     runs-on: ubuntu-latest
   #     needs: validate
-  #     environment: prod
+  #     environment: sandbox
 
+  #     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
   #     defaults:
   #       run:
   #         shell: bash
@@ -189,24 +146,67 @@ jobs:
   #         service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
   #         export_default_credentials: true
 
-  #     - name: Bucket Production
+  #     - name: Bucket Sandbox
   #       shell: bash
   #       run: |
   #         gsutil ls -b gs://${{ secrets.GCP_PROJECT_NAME}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_NAME}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_NAME}} )
 
-  #     - name: plan-production
+  #     - name: plan-sandbox
   #       uses: dflook/terraform-plan@v1
   #       env:
   #         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
   #         TERRAFORM_HTTP_CREDENTIALS: |
   #           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
-  #         TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
-  #         TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
   #       with:
   #         path: ./
-  #         var_file: environment/production/variables.tfvars
-  #         label: production
-  #         backend_config_file: environment/production/gcs-bucket.tfvars
+  #         var_file: environment/sandbox/variables.tfvars
+  #         label: sandbox
+  #         backend_config_file: environment/sandbox/gcs-bucket.tfvars
+
+  # ####################################
+  # # Production 
+  # ####################################
+
+    pre-setup-prod:
+      name: 'Pre Setup Production'
+      runs-on: ubuntu-latest
+      needs: validate
+      environment: prod
+
+      defaults:
+        run:
+          shell: bash
+
+      steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          export_default_credentials: true
+
+      - name: Bucket Production
+        shell: bash
+        run: |
+          gsutil ls -b gs://${{ secrets.GCP_PROJECT_NAME}} || (gcloud services enable storage-api.googleapis.com && gsutil mb gs://${{ secrets.GCP_PROJECT_NAME}} && gsutil versioning set on gs://${{ secrets.GCP_PROJECT_NAME}} )
+
+      - name: plan-production
+        uses: dflook/terraform-plan@v1
+        env:
+          GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+          TERRAFORM_HTTP_CREDENTIALS: |
+            github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
+          TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
+          TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
+        with:
+          path: ./
+          var_file: environment/production/variables.tfvars
+          label: production
+          backend_config_file: environment/production/gcs-bucket.tfvars
 
 # ####################################
 # # IBO 
