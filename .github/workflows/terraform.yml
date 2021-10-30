@@ -213,7 +213,7 @@ jobs:
 # ####################################
 
   pre-setup-ibo:
-    name: 'Pre Setup Production'
+    name: 'Pre Setup IBO'
     runs-on: ubuntu-latest
     needs: validate
     environment: ibo
