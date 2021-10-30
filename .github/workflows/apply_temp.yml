@@ -1,0 +1,38 @@
+name: 'Install Infra IBO Prod'
+on:
+  workflow_dispatch:
+      inputs:
+        logLevel:
+          description: 'environment'     
+          required: true
+          default: ibo
+jobs:
+
+  apply-ibo:
+    name: 'Install Infra Production'
+    runs-on: ubuntu-latest
+    environment: ibo
+
+    defaults:
+      run:
+        shell: bash
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: apply-production
+      uses: dflook/terraform-apply@v1
+      env:
+        GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY_IBO }}
+        TERRAFORM_HTTP_CREDENTIALS: |
+          github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
+        TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
+        TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
+      with:
+        path: ./
+        var_file: environment/ibo/variables.tfvars
+        label: ibo
+        backend_config_file: environment/ibo/gcs-bucket.tfvars
+        auto_approve: true

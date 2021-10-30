@@ -1,0 +1,11 @@
+---
+gateways:
+  - core-gateway.default.svc.cluster.local
+
+ingress:
+  uriPrefix: /prometheus
+  hosts:
+    - "*"
+
+prometheus:
+  secretName: prometheus-proxy-auth
