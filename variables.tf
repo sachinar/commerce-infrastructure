@@ -675,3 +675,10 @@ variable "push_pubsub_domain" {
   type        = string
   description = "common domain name for push end points"
 }
+
+#######################################################
+variable "cloud_tasks_region" {
+  description = "GCP region for creating cloud tasks queue"
+  type        = string
+  default     = "asia-south1"
+}
