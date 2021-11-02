@@ -1,5 +1,4 @@
 module "jumpbox" {
-  count     = var.environment == "prod" ? 0:1 
   providers = {
     kubernetes = kubernetes.gke
   }
