@@ -162,7 +162,7 @@ jumpbox_number_of_replicas  = 1
 jumpbox_docker_image        = "us.gcr.io/ebo-dev-321910/jumpbox@sha256"
 jumpbox_docker_image_tag    = "8a79d9f2acdf9451591ecc27c7dc5b4531751f437a5905f3edaf302b5f6337da"
 jumpbox_docker_image_policy = "Always"
-jumpbox_pull_secret_key     = "gcr-json-key-jumpbox"
+jumpbox_pull_secret_key     = "gcr-json-key"
 ############### PUB/SUB VARIABLES ######################
 
 topic_name            = "inventory-threshold-create"
