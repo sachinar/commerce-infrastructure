@@ -2,23 +2,23 @@
 # ISTIO TELEMETRY PROXY
 # Expose Prometheus Securely
 # ==========================
-resource "kubernetes_secret" "prometheus_proxy_kubernetes_secret" {
-  count    = var.environment == "dev" ? 1:0
-  provider = kubernetes.gke
+# resource "kubernetes_secret" "prometheus_proxy_kubernetes_secret" {
+#   count    = var.environment == "dev" ? 1:0
+#   provider = kubernetes.gke
 
-  metadata {
-    name      = "prometheus-proxy-auth"
-    namespace = "monitoring"
-  }
+#   metadata {
+#     name      = "prometheus-proxy-auth"
+#     namespace = "monitoring"
+#   }
 
-  data = {
-    htpasswd = var.prometheus_htpasswd
-  }
+#   data = {
+#     htpasswd = var.prometheus_htpasswd
+#   }
 
-  depends_on = [
-    module.gke
-  ]
-}
+#   depends_on = [
+#     module.gke
+#   ]
+# }
 
 module "istio_telemetry_proxy" {
 
