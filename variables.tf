@@ -636,6 +636,14 @@ variable "invoice_service_account_roles" {
 
 }
 
+variable "order_service_account_roles" {
+  description = "Roles for order services"
+  type        = list(string)
+  default     = ["roles/storage.admin"]
+
+}
+
+
 variable "customer_service_account_roles" {
   description = "Roles for invoice services"
   type        = list(string)
