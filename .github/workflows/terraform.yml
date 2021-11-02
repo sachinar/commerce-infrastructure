@@ -164,7 +164,7 @@ jobs:
     #       backend_config_file: environment/sandbox/gcs-bucket.tfvars
 
   # # ####################################
-  # # # Production 
+  # # # Production  - DEPRECATED
   # # ####################################
 
   # pre-setup-prod:
