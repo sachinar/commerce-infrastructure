@@ -1,17 +1,17 @@
-name: 'Install Infra IBO Prod'
+name: 'Install Infra Prod'
 on:
   workflow_dispatch:
       inputs:
         logLevel:
           description: 'environment'     
           required: true
-          default: ibo
+          default: prod
 jobs:
 
-  apply-ibo:
+  apply-prod:
     name: 'Install Infra IBO'
     runs-on: ubuntu-latest
-    environment: ibo
+    environment: prod
 
     defaults:
       run:
@@ -32,7 +32,7 @@ jobs:
         TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
       with:
         path: ./
-        var_file: environment/ibo/variables.tfvars
-        label: ibo
-        backend_config_file: environment/ibo/gcs-bucket.tfvars
+        var_file: environment/production/variables.tfvars
+        label: prod
+        backend_config_file: environment/production/gcs-bucket.tfvars
         auto_approve: true
