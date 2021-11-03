@@ -160,6 +160,6 @@ jobs:
         TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
       with:
         path: ./
-        var_file: environment/ibo/variables.tfvars
+        var_file: environment/production/variables.tfvars
         label: ibo
-        backend_config_file: environment/ibo/gcs-bucket.tfvars
+        backend_config_file: environment/production/gcs-bucket.tfvars
