@@ -34,7 +34,7 @@ jobs:
           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
         TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
         TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
-        TF_VAR_jumpbox_docker_registry_password: ${{ secrets.TOKEN}}
+        TF_VAR_jumpbox_docker_registry_password: ${{ secrets.GRP_CI_TOKEN}}        
       with:
         path: ./
         var_file: environment/dev/variables.tfvars
