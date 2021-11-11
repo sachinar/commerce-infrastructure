@@ -296,6 +296,12 @@ variable "logistics_database" {
   default     = "logistics"
 }
 
+variable "notification_database" {
+  description = "The database to use"
+  type        = string
+  default     = "notification"
+}
+
 ## NAMESPACE_VARIABLE ##
 
 variable "tax_namespace" {
@@ -333,6 +339,12 @@ variable "logistics_namespace" {
   default     = "logistics-service"
 }
 
+variable "notification_namespace" {
+  description = "The namespace to use"
+  type        = string
+  default     = "notification"
+}
+
 ## SECRET_VARIABLE ##
 
 variable "ord_secret_name" {
@@ -368,6 +380,12 @@ variable "logistics_secret_name" {
   description = "The the secret name to use"
   type        = string
   default     = "logistics-db-secrets"
+}
+
+variable "notification_secret_name" {
+  description = "The the secret name to use"
+  type        = string
+  default     = "notification-db-secrets"
 }
 
 ##

@@ -63,6 +63,11 @@ resource "random_string" "logistics_user_password" {
   override_special = "@#%&*()-_=+[]{}<>:?"
 }
 
+resource "random_string" "notification_user_password" {
+  length           = 16
+  special          = true
+  override_special = "@#%&*()-_=+[]{}<>:?"
+}
 
 resource "random_string" "dev_team_db_password" {
   length           = 16
@@ -159,6 +164,11 @@ module "inventory_google_postgres" {
       charset   = "UTF8"
       collation = "en_US.UTF8"
     },
+    {
+      name      = var.notification_database
+      charset   = "UTF8"
+      collation = "en_US.UTF8"
+    },    
   ]
 
   user_name     = "inventory-${random_string.inventory_app_user_name.result}"
@@ -197,6 +207,10 @@ module "inventory_google_postgres" {
       name     = "logistics-user"
       password = random_string.logistics_user_password.result
     },
+    {
+      name     = "notification-user"
+      password = random_string.notification_user_password.result
+    },    
   ]
 
   depends_on = [google_service_networking_connection.postgres_private_vpc_connection]
@@ -359,6 +373,25 @@ resource "kubernetes_secret" "logistics_app_secret" {
     DB_PORT     = "5432"
     DB_USER     = "logistics-user"
     DB_PASSWORD = random_string.logistics_user_password.result
+  }
+
+  depends_on = [module.gke]
+}
+
+# notification
+resource "kubernetes_secret" "notification_app_secret" {
+  provider = kubernetes.gke
+  metadata {
+    name      = var.notification_secret_name
+    namespace = var.notification_namespace
+  }
+
+  data = {
+    DB_HOST     = google_dns_record_set.inventory_postgres_a_record.name
+    DB_NAME     = var.notification_database
+    DB_PORT     = "5432"
+    DB_USER     = "notification-user"
+    DB_PASSWORD = random_string.notification_user_password.result
   }
 
   depends_on = [module.gke]
