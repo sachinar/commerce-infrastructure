@@ -180,7 +180,7 @@ gke_node_pool_disk_size = 100
 gke_max_pods_per_node   = 64
 gke_namespaces = ["inventory", "ebo", "node-master", "order-service", "promise-service", "logistics-service",
 "order-orchestration", "handler",
-"payment", "tax", "invoice", "core-service"]
+"payment", "tax", "invoice", "core-service", "notification"]
 istio_namespaces = ["istio-operator", "istio-system"]
 ############# JUMPBOX VARIABLES #######################
 jumpbox_deployment_name = "jumpbox"
