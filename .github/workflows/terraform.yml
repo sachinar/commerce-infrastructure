@@ -68,6 +68,9 @@ jobs:
           TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
           TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
           TF_VAR_jumpbox_docker_registry_password: ${{ secrets.GRP_CI_TOKEN}}
+          TF_VAR_cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
+          TF_VAR_cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }}
+          TF_VAR_cloudflare_zone_id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
         with:
           path: ./
           var_file: environment/dev/variables.tfvars
@@ -115,6 +118,9 @@ jobs:
         TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
         TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
         TF_VAR_jumpbox_docker_registry_password: ${{ secrets.GRP_CI_TOKEN}}
+        TF_VAR_cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
+        TF_VAR_cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }}
+        TF_VAR_cloudflare_zone_id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
       with:
         path: ./
         var_file: environment/staging/variables.tfvars
@@ -161,6 +167,9 @@ jobs:
         TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
         TF_VAR_ssl_server_key: ${{ secrets.SERVER_KEY }}
         TF_VAR_jumpbox_docker_registry_password: ${{ secrets.GRP_CI_TOKEN}}
+        TF_VAR_cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
+        TF_VAR_cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }}
+        TF_VAR_cloudflare_zone_id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
       with:
         path: ./
         var_file: environment/production/variables.tfvars

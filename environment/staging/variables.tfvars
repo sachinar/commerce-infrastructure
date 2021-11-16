@@ -164,3 +164,6 @@ jumpbox_docker_image_policy = "Always"
 
 topic_name            = "inventory-threshold-create"
 push_pubsub_domain    = "https://services-staging.ibo.com"
+
+############## Cloudflare variables #################
+cloudflare_record_name = "pos-staging.ibo.com"

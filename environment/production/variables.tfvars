@@ -167,3 +167,6 @@ jumpbox_pull_secret_key     = "gcr-json-key"
 
 topic_name            = "inventory-threshold-create"
 push_pubsub_domain    = "https://services.ibo.com"
+
+############## Cloudflare variables #################
+cloudflare_record_name = "pos.ibo.com"
