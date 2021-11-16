@@ -20,6 +20,11 @@ terraform {
       version = "~>2.3.0"
       source  = "hashicorp/helm"
     }
+
+    cloudflare = {
+      version = ">= 3.2.0, <=3.3.0"
+      source  = "cloudflare/cloudflare"
+    }
   }
 
 }
@@ -32,4 +37,9 @@ provider "google" {
 provider "google-beta" {
   project = var.project_id
   region  = var.region
+}
+
+provider "cloudflare" {
+  email   = var.cloudflare_email
+  api_key = var.cloudflare_api_key
 }

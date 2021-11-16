@@ -712,3 +712,25 @@ variable "cloud_tasks_region" {
   type        = string
   default     = "asia-south1"
 }
+
+############## CLOUDFLARE VARIABLES ###############
+
+variable "cloudflare_email" {
+  type        = string
+  description = "Cloudflare email"
+}
+
+variable "cloudflare_api_key" {
+  type        = string
+  description = "Cloudflare API Key"
+}
+
+variable "cloudflare_record_name" {
+  type        = string
+  description = "Cloudflare DNS name for POS"
+}
+
+variable "cloudflare_zone_id" {
+  type        = string
+  description = "Cloudflare Zone ID"
+}
