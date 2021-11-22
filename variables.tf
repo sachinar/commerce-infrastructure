@@ -302,6 +302,12 @@ variable "notification_database" {
   default     = "notification"
 }
 
+variable "wallet_database" {
+  description = "The database to use"
+  type        = string
+  default     = "wallet"
+}
+
 ## NAMESPACE_VARIABLE ##
 
 variable "tax_namespace" {
@@ -386,6 +392,12 @@ variable "notification_secret_name" {
   description = "The the secret name to use"
   type        = string
   default     = "notification-db-secrets"
+}
+
+variable "wallet_secret_name" {
+  description = "The the secret name to use"
+  type        = string
+  default     = "wallet-db-secrets"
 }
 
 ##
