@@ -69,6 +69,12 @@ resource "random_string" "notification_user_password" {
   override_special = "@#%&*()-_=+[]{}<>:?"
 }
 
+resource "random_string" "wallet_user_password" {
+  length           = 16
+  special          = true
+  override_special = "@#%&*()-_=+[]{}<>:?"
+}
+
 resource "random_string" "dev_team_db_password" {
   length           = 16
   special          = true
@@ -169,6 +175,11 @@ module "inventory_google_postgres" {
       charset   = "UTF8"
       collation = "en_US.UTF8"
     },    
+    {
+      name      = var.wallet_database
+      charset   = "UTF8"
+      collation = "en_US.UTF8"
+    },  
   ]
 
   user_name     = "inventory-${random_string.inventory_app_user_name.result}"
@@ -211,6 +222,10 @@ module "inventory_google_postgres" {
       name     = "notification-user"
       password = random_string.notification_user_password.result
     },    
+    {
+      name     = "wallet-user"
+      password = random_string.wallet_user_password.result
+    }, 
   ]
 
   depends_on = [google_service_networking_connection.postgres_private_vpc_connection]
@@ -392,6 +407,26 @@ resource "kubernetes_secret" "notification_app_secret" {
     DB_PORT     = "5432"
     DB_USER     = "notification-user"
     DB_PASSWORD = random_string.notification_user_password.result
+  }
+
+  depends_on = [module.gke]
+}
+
+
+# wallet
+resource "kubernetes_secret" "wallet_app_secret" {
+  provider = kubernetes.gke
+  metadata {
+    name      = var.wallet_secret_name
+    namespace = var.payment_namespace
+  }
+
+  data = {
+    DB_HOST     = google_dns_record_set.inventory_postgres_a_record.name
+    DB_NAME     = var.wallet_database
+    DB_PORT     = "5432"
+    DB_USER     = "wallet-user"
+    DB_PASSWORD = random_string.wallet_user_password.result
   }
 
   depends_on = [module.gke]
