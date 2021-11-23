@@ -308,6 +308,12 @@ variable "wallet_database" {
   default     = "wallet"
 }
 
+variable "grn_database" {
+  description = "The database to use"
+  type        = string
+  default     = "grn"
+}
+
 ## NAMESPACE_VARIABLE ##
 
 variable "tax_namespace" {
@@ -349,6 +355,12 @@ variable "notification_namespace" {
   description = "The namespace to use"
   type        = string
   default     = "notification"
+}
+
+variable "fulfillment_namespace" {
+  description = "The namespace to use"
+  type        = string
+  default     = "fulfillment"
 }
 
 ## SECRET_VARIABLE ##
@@ -398,6 +410,12 @@ variable "wallet_secret_name" {
   description = "The the secret name to use"
   type        = string
   default     = "wallet-db-secrets"
+}
+
+variable "grn_secret_name" {
+  description = "The the secret name to use"
+  type        = string
+  default     = "grn-db-secrets"
 }
 
 ##
