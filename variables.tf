@@ -548,6 +548,12 @@ variable "deployment_service_account_roles" {
   type        = set(string)
 }
 
+variable "bq_grafana_roles" {
+  description = "Role for deployment of application to GCP"
+  type        = set(string)
+  default     = ["roles/bigquery.dataViewer", "roles/bigquery.jobUser"]
+}
+
 ########## QA DATABASE CREATION ############
 
 #variable "additional_databases" {
