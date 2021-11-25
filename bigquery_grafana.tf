@@ -22,6 +22,6 @@ resource "google_service_account_key" "bq_grafana_key" {
 
 resource "google_storage_bucket_object" "bq_grafana_key_bucket_object" {
   name    = "bigquery-grafana-${var.environment}.key"
-  content = google_service_account_key.deployment_service_account_key.private_key
+  content = google_service_account_key.bq_grafana_key.private_key
   bucket  = var.project_name
 }
