@@ -15,13 +15,13 @@ resource "google_service_account_key" "bq_grafana_key" {
   service_account_id = google_service_account.bq_grafana.name
 }
 
-resource "google_kms_secret_ciphertext" "bq_grafana_bucket_object" {
-  crypto_key = google_kms_crypto_key.crypto_key.id
-  plaintext  = base64decode(google_service_account_key.bq_grafana_key.private_key)
-}
+# resource "google_kms_secret_ciphertext" "bq_grafana_bucket_object" {
+#   crypto_key = google_kms_crypto_key.crypto_key.id
+#   plaintext  = base64decode(google_service_account_key.bq_grafana_key.private_key)
+# }
 
 resource "google_storage_bucket_object" "bq_grafana_key_bucket_object" {
   name    = "bigquery-grafana-${var.environment}.key"
-  content = google_kms_secret_ciphertext.bq_grafana_bucket_object.ciphertext
+  content = google_service_account_key.deployment_service_account_key.private_key
   bucket  = var.project_name
 }
