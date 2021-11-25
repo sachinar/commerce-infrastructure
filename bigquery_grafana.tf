@@ -22,6 +22,6 @@ resource "google_kms_secret_ciphertext" "bq_grafana_bucket_object" {
 
 resource "google_storage_bucket_object" "bq_grafana_key_bucket_object" {
   name    = "bigquery-grafana-${var.environment}.key"
-  content = google_kms_secret_ciphertext.sodimac_store_server_acess_service_account_key_bucket_object.ciphertext
+  content = google_kms_secret_ciphertext.bq_grafana_bucket_object.ciphertext
   bucket  = var.project_name
 }
