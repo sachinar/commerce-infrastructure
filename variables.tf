@@ -554,6 +554,12 @@ variable "bq_grafana_roles" {
   default     = ["roles/bigquery.dataViewer", "roles/bigquery.jobUser"]
 }
 
+variable "authorized_networks" {
+  default = []
+  type        = list(map(string))
+  description = "List of mapped public networks authorized to access to the instances. Default - short range of GCP health-checkers IPs"
+}
+
 ########## QA DATABASE CREATION ############
 
 #variable "additional_databases" {
@@ -769,4 +775,10 @@ variable "cloudflare_record_name" {
 variable "cloudflare_zone_id" {
   type        = string
   description = "Cloudflare Zone ID"
+}
+
+variable "public_ip" {
+  type        = string
+  description = "Public IP for DB"
+  default     = "0"
 }

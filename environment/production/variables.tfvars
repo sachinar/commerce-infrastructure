@@ -46,6 +46,17 @@ log_config_filter               = "ERRORS_ONLY"
 postgres_ipv4_address = "10.4.0.0"
 postgres_ipv4_prefix  = "20"
 
+public_ip            = 1
+authorized_networks  = [
+  {
+    name  = "sprinkle"
+    value = "34.93.254.126/32"
+  },
+  {
+    name  = "kubernetes_ip"
+    value = "34.93.106.136/32"
+  }
+]
 database_version     = "POSTGRES_13"
 db_master_region     = "asia-south1"
 db_master_zone       = "asia-south1-a"
