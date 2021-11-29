@@ -115,7 +115,7 @@ module "inventory_google_postgres" {
   }
 
   ip_configuration = {
-    ipv4_enabled        = false
+    ipv4_enabled        = var.public_ip == "0" ? false:true
     require_ssl         = false
     private_network     = google_compute_network.network.self_link
     authorized_networks = []

@@ -46,6 +46,7 @@ log_config_filter               = "ERRORS_ONLY"
 postgres_ipv4_address = "10.4.0.0"
 postgres_ipv4_prefix  = "20"
 
+public_ip            = 1
 database_version     = "POSTGRES_13"
 db_master_region     = "asia-south1"
 db_master_zone       = "asia-south1-a"

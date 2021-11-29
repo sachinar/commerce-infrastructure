@@ -770,3 +770,9 @@ variable "cloudflare_zone_id" {
   type        = string
   description = "Cloudflare Zone ID"
 }
+
+variable "public_ip" {
+  type        = string
+  description = "Public IP for DB"
+  default     = "0"
+}
