@@ -47,12 +47,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-          export_default_credentials: true
+      # - name: Set up Cloud SDK
+      #   uses: google-github-actions/setup-gcloud@b8f95eb7d716bf9a715eafd169162b93f69ed520
+      #   with:
+      #     project_id: ${{ secrets.GCP_PROJECT_ID }}
+      #     service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+      #     export_default_credentials: true
 
       - name: Bucket creation DEV
         shell: bash
@@ -63,6 +63,7 @@ jobs:
         uses: dflook/terraform-plan@v1
         env:
           GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
           TERRAFORM_HTTP_CREDENTIALS: |
             github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
           TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
@@ -97,12 +98,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@master
-      with:
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-        export_default_credentials: true
+    # - name: Set up Cloud SDK
+    #   uses: google-github-actions/setup-gcloud@b8f95eb7d716bf9a715eafd169162b93f69ed520
+    #   with:
+    #     project_id: ${{ secrets.GCP_PROJECT_ID }}
+    #     service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+    #     export_default_credentials: true
 
     - name: Bucket staging
       shell: bash
@@ -113,6 +114,7 @@ jobs:
       uses: dflook/terraform-plan@v1
       env:
         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
         TERRAFORM_HTTP_CREDENTIALS: |
           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
         TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
@@ -146,12 +148,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@master
-      with:
-        project_id: ${{ secrets.GCP_PROJECT_ID_IBO }}
-        service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY_IBO }}
-        export_default_credentials: true
+    # - name: Set up Cloud SDK
+    #   uses: google-github-actions/setup-gcloud@b8f95eb7d716bf9a715eafd169162b93f69ed520
+    #   with:
+    #     project_id: ${{ secrets.GCP_PROJECT_ID_IBO }}
+    #     service_account_key: ${{ secrets.GOOGLE_PRIVATE_KEY_IBO }}
+    #     export_default_credentials: true
 
     - name: Bucket Production
       shell: bash
@@ -162,6 +164,7 @@ jobs:
       uses: dflook/terraform-plan@v1
       env:
         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
         TERRAFORM_HTTP_CREDENTIALS: |
           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
         TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
