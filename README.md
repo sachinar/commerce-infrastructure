@@ -4,3 +4,5 @@
 [![Install Infra Staging](https://github.com/ebomart/commerce-infrastructure/actions/workflows/apply_stage.yml/badge.svg)](https://github.com/ebomart/commerce-infrastructure/actions/workflows/apply_stage.yml)
 [![Install Infra Prod](https://github.com/ebomart/commerce-infrastructure/actions/workflows/apply_ibo_prod.yml/badge.svg)](https://github.com/ebomart/commerce-infrastructure/actions/workflows/apply_ibo_prod.yml)
 # Commerce-Infrastructure
+
+Added Terraform state encryption for DEV
