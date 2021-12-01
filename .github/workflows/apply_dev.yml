@@ -30,6 +30,7 @@ jobs:
       env:
         GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+        GOOGLE_ENCRYPTION_KEY: ${{ secrets.GOOGLE_ENCRYPTION_KEY }}
         TERRAFORM_HTTP_CREDENTIALS: |
           github.com/ebomart=${{ secrets.CI_USER}}:${{ secrets.CI_TOKEN}}
         TF_VAR_ssl_server_certificate: ${{ secrets.SERVER_CERTIFICATE}}
