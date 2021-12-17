@@ -53,7 +53,7 @@ jobs:
           credentials_json: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@vmaster
+        uses: google-github-actions/setup-gcloud@master
 
       # - name: Set up Cloud SDK
       #   uses: google-github-actions/setup-gcloud@master
@@ -113,7 +113,7 @@ jobs:
         credentials_json: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
     - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@vmaster
+      uses: google-github-actions/setup-gcloud@master
 
     - name: Bucket staging
       shell: bash
@@ -164,7 +164,7 @@ jobs:
         credentials_json: ${{ secrets.GOOGLE_PRIVATE_KEY_IBO }}
 
     - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@vmaster
+      uses: google-github-actions/setup-gcloud@master
 
     - name: Bucket Production
       shell: bash
