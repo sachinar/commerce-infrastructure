@@ -21,7 +21,7 @@ provider "helm" {
 }
 
 module "gke" {
-  source                = "git::https://github.com/ebomart/terraform-modules.git//gke"
+  source                = "git::https://github.com/ebomart/terraform-modules.git//gke?ref=upgrade"
   environment           = var.environment
   project_name          = var.project_id
   cluster_name          = var.gke_cluster_name
