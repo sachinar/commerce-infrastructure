@@ -38,7 +38,8 @@ jobs:
         TF_VAR_jumpbox_docker_registry_password: ${{ secrets.GRP_CI_TOKEN}}
         TF_VAR_cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
         TF_VAR_cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }} 
-        TF_VAR_cloudflare_zone_id: ${{ secrets.CLOUDFLARE_ZONE_ID }}  
+        TF_VAR_cloudflare_zone_id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+        TF_VAR_auth0_credentials: ${{ secrets.AUTH0_CREDS_DEV }} 
       with:
         path: ./
         var_file: environment/dev/variables.tfvars
