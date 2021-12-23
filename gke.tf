@@ -121,3 +121,21 @@ resource "kubernetes_secret" "tls_certificate" {
 
   depends_on = [module.gke]
 }
+
+# Core Auth0 client credentials - Start
+
+resource "kubernetes_secret" "core_auth0_jwt_client_credentials" {
+  count = var.environment == "dev" ? 1 : 0
+  provider = kubernetes.gke
+
+  metadata {
+    name      = "auth0-credentials"
+    namespace = "ebo"
+  }
+
+  data = {
+    "auth0_credentials.json" = var.auth0_credentials
+  }
+
+  depends_on = [module.gke]
+}
