@@ -786,4 +786,5 @@ variable "public_ip" {
 variable "auth0_credentials" {
   type        = string
   description = "Creds for Auth0"
+  default     = "dummy"
 }
