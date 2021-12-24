@@ -4,3 +4,4 @@
 .talismanrc
 .pre-commit-config.yaml
 htpasswd
+istio_telemetry_gke.tf
