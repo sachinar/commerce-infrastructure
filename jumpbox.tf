@@ -3,7 +3,7 @@ module "jumpbox" {
     kubernetes = kubernetes.gke
   }
 
-  source                  = "git::https://github.com/ebomart/terraform-modules.git//jumpbox"
+  source                  = "git::https://github.com/ebomart/terraform-modules.git//jumpbox?ref=security_context"
   jumpbox_deployment_name = var.jumpbox_deployment_name
   jumpbox_namespace       = var.jumpbox_namespace
   jumpbox_docker_registry_url      = "us.gcr.io"
