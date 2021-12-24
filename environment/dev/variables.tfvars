@@ -190,7 +190,7 @@ jumpbox_namespace       = "default"
 # jumpbox_docker_registry_password = "to-be-provided-by-our-pipeline"
 jumpbox_number_of_replicas  = 1
 jumpbox_docker_image        = "us.gcr.io/ebo-dev-321910/jumpbox@sha256"
-jumpbox_docker_image_tag    = "8a79d9f2acdf9451591ecc27c7dc5b4531751f437a5905f3edaf302b5f6337da"
+jumpbox_docker_image_tag    = "3210d8d60112ddd6d4335851f4b53fce7c9b929e55b43b5f639dbe1a70a76a91"
 jumpbox_docker_image_policy = "Always"
 
 ############### PUB/SUB VARIABLES ######################
