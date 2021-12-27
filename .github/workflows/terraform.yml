@@ -15,15 +15,15 @@ jobs:
       uses: docker://wata727/tflint:0.29.0
 
   regula_tf_job:
-      runs-on: ubuntu-latest
-      name: Regula Terraform
-      needs: terraform_lint
-      steps:
-      - uses: actions/checkout@master
-      - uses: fugue/regula-action@v1.6.0
-        with:
-          input_path: ./
-          rego_paths: policy
+    runs-on: ubuntu-latest
+    name: Regula Terraform
+    needs: terraform_lint
+    steps:
+    - uses: actions/checkout@master
+    - uses: fugue/regula-action@v1.6.0
+      with:
+        input_path: ./
+        rego_paths: policy
 
   validate:
     name: 'Validate Configuration'
