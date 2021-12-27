@@ -715,6 +715,19 @@ variable "customer_service_account_roles" {
 
 }
 
+##### Secret Manager Credentials #####
+variable "secret_mgr_service_account_roles" {
+  description = "Roles for api creds"
+  type        = list(string)
+  default     = ["roles/secretmanager.admin"]
+}
+
+variable "secret_mgr_namespace" {
+  description = "Namespace for secret manager"
+  type        = string
+  default     = "api-creds"
+}
+
 variable "core_service_account_roles" {
   description = "Roles for core services"
   type        = list(string)
