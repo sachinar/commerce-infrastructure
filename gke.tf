@@ -130,7 +130,7 @@ resource "kubernetes_secret" "core_auth0_jwt_client_credentials" {
 
   metadata {
     name      = "auth0-credentials"
-    namespace = "ebo"
+    namespace = "api-creds"
   }
 
   data = {
